@@ -7,24 +7,24 @@
 [![phplint](https://github.com/guanguans/valet-drivers/actions/workflows/phplint.yml/badge.svg)](https://github.com/guanguans/valet-drivers/actions/workflows/phplint.yml)
 [![check & fix styling](https://github.com/guanguans/valet-drivers/actions/workflows/php-cs-fixer.yml/badge.svg)](https://github.com/guanguans/valet-drivers/actions/workflows/php-cs-fixer.yml)
 
-## Installation
+## 安装
 
 ```bash
 ```
 
-## Contributing
+## 贡献指南
 
-Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
+请参阅 [CONTRIBUTING](.github/CONTRIBUTING.md) 有关详细信息。
 
-## Security Vulnerabilities
+## 安全漏洞
 
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+请查看[我们的安全政策](../../security/policy)了解如何报告安全漏洞。
 
-## Credits
+## 贡献者
 
 * [guanguans](https://github.com/guanguans)
-* [All Contributors](../../contributors)
+* [所有贡献者](../../contributors)
 
-## License
+## 协议
 
-The MIT License (MIT). Please see [License File](LICENSE) for more information.
+MIT 许可证（MIT）。有关更多信息，请参见[协议文件](LICENSE)。
