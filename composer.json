@@ -1,0 +1,85 @@
+{
+    "name": "guanguans/valet-drivers",
+    "description": "Drivers for laravel-valet.",
+    "license": "MIT",
+    "type": "metapackage",
+    "keywords": [
+        "valet",
+        "driver",
+        "laravel",
+        "lnmp",
+        "mnmp",
+        "development environment",
+        "development",
+        "environment",
+        "env"
+    ],
+    "authors": [
+        {
+            "name": "guanguans",
+            "email": "ityaozm@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0"
+    },
+    "require-dev": {
+        "brainmaestro/composer-git-hooks": "^2.8 || ^3.0",
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "laravel/valet": "^3.0",
+        "overtrue/phplint": "^2.0 || ^3.0 || ^4.0 || ^5.0"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "classmap": [
+            "drivers"
+        ]
+    },
+    "config": {
+        "apcu-autoloader": true,
+        "classmap-authoritative": true,
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "hooks": {
+            "post-merge": [
+                "composer checks"
+            ],
+            "pre-commit": [
+                "composer checks"
+            ]
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "@cghooks add --ignore-lock",
+            "@cghooks update"
+        ],
+        "post-update-cmd": [
+            "@cghooks update"
+        ],
+        "post-autoload-dump": [],
+        "cghooks": "./vendor/bin/cghooks",
+        "checks": [
+            "@mark-start",
+            "@phplint",
+            "@mark-separate",
+            "@style-lint",
+            "@mark-finish"
+        ],
+        "mark-finish": "printf '\\n!\\n!\\t\\033[0;32m%s\\033[0m\\n!\\n\\n' \"Finished\"",
+        "mark-separate": "printf '\\n!\\n!\\t\\033[0;33m%s\\033[0m\\n!\\n\\n' \"----------------\"",
+        "mark-start": "printf '\\n!\\n!\\t\\033[0;36m%s\\033[0m\\n!\\n\\n' \"Started\"",
+        "md-fix": "@md-lint --fix",
+        "md-lint": "lint-md --config .lintmdrc ./*.md ./.github/ ./docs/",
+        "phplint": "./vendor/bin/phplint --no-cache",
+        "post-merge": [
+            "composer install"
+        ],
+        "style-fix": "./vendor/bin/php-cs-fixer fix --using-cache=no --config=.php-cs-fixer.php --ansi",
+        "style-lint": "./vendor/bin/php-cs-fixer fix --using-cache=no --config=.php-cs-fixer.php --diff --dry-run --ansi"
+    }
+}
