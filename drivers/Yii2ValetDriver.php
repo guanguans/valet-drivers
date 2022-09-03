@@ -10,6 +10,14 @@
 
 /**
  * This is modified from https://github.com/chinaphp/yii2-valet-driver.
+ *
+ * ```
+ * https://yii2-app-basic.test/index.php?r=site%2Flogin
+ *
+ * $sitePath /Users/yaozm/Documents/wwwroot/yii2-app-basic
+ * $siteName yii2-app-basic
+ * $uri /index.php
+ * ```
  */
 class Yii2ValetDriver extends BasicValetDriver
 {
@@ -24,8 +32,8 @@ class Yii2ValetDriver extends BasicValetDriver
      */
     public function serves($sitePath, $siteName, $uri)
     {
-        return (file_exists($sitePath.'/../vendor/yiisoft/yii2/Yii.php') || file_exists($sitePath.'/vendor/yiisoft/yii2/Yii.php'))
-               && file_exists($sitePath.'/yii');
+        return (file_exists($sitePath.'/../yii') && file_exists($sitePath.'/../vendor/yiisoft/yii2/Yii.php'))
+               || (file_exists($sitePath.'/yii') && file_exists($sitePath.'/vendor/yiisoft/yii2/Yii.php'));
     }
 
     /**
@@ -40,15 +48,11 @@ class Yii2ValetDriver extends BasicValetDriver
     public function isStaticFile($sitePath, $siteName, $uri)
     {
         // this works for domains called code assets
-        // for example your site name product.{valet-domen} assets domen is assets.product.{valet-domen}
         if (0 === strpos($siteName, 'assets')) {
             return $sitePath.$uri;
         }
 
-        if (
-            $this->isActualFile($staticFilePath = $sitePath.'/web/'.$uri)
-            && '.php' !== pathinfo($staticFilePath, PATHINFO_EXTENSION)
-        ) {
+        if ($this->isActualFile($staticFilePath = "$sitePath/web$uri")) {
             return $staticFilePath;
         }
 
@@ -66,23 +70,16 @@ class Yii2ValetDriver extends BasicValetDriver
      */
     public function frontControllerPath($sitePath, $siteName, $uri)
     {
-        $uriPath = explode('/', $uri)[1];
-
-        if (file_exists($sitePath.'/web/'.$uriPath.'/index.php') && ! empty($uriPath)) {
-            $_SERVER['DOCUMENT_ROOT'] = $sitePath;
-            $_SERVER['PHP_SELF'] = '/'.$uriPath.'/index.php';
-            $_SERVER['SCRIPT_FILENAME'] = $sitePath.'/web/'.$uriPath.'/index.php';
-            $_SERVER['SCRIPT_NAME'] = '/'.$uriPath.'/index.php';
-
-            return $sitePath.'/web/'.$uriPath.'/index.php';
+        if (! file_exists("$sitePath/web")) {
+            exit('This may be the advanced version. Please link the subdirectory(backend/frontend) to Valet.');
         }
 
         $_SERVER['DOCUMENT_ROOT'] = $sitePath;
-        $_SERVER['PHP_SELF'] = '/index.php';
+        // $_SERVER['SERVER_ADDR'] = '127.0.0.1';
         $_SERVER['SERVER_NAME'] = $_SERVER['HTTP_HOST'];
-        $_SERVER['SCRIPT_FILENAME'] = $sitePath.'/web/index.php';
-        $_SERVER['SCRIPT_NAME'] = '/index.php';
+        $_SERVER['SCRIPT_FILENAME'] = "$sitePath/web/index.php";
+        $_SERVER['SCRIPT_NAME'] = $_SERVER['PHP_SELF'] = '/index.php';
 
-        return $sitePath.'/web/index.php';
+        return $_SERVER['SCRIPT_FILENAME'];
     }
 }
