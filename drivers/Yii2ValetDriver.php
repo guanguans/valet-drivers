@@ -11,7 +11,7 @@
 /**
  * This is modified from https://github.com/chinaphp/yii2-valet-driver.
  */
-class Yii2ValetDriver extends ValetDriver
+class Yii2ValetDriver extends BasicValetDriver
 {
     /**
      * Determine if the driver serves the request.
