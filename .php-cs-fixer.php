@@ -22,7 +22,7 @@ $finder = PhpCsFixer\Finder::create()
     ])
     ->append([
         __DIR__.'/.php-cs-fixer.php',
-        __DIR__.'/ComposerScripts.php',
+        // __DIR__.'/ComposerScripts.php',
     ])
     ->exclude([
         '.github/',
@@ -40,8 +40,8 @@ $finder = PhpCsFixer\Finder::create()
 
 return (new PhpCsFixer\Config())
     ->setRules([
-        '@PSR12' => true,
-        // '@Symfony' => true,
+        // '@PSR12' => true,
+        '@Symfony' => true,
         'header_comment' => [
             'header' => $header,
             'comment_type' => 'PHPDoc',
