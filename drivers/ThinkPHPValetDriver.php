@@ -11,7 +11,7 @@
 /**
  * This is modified from https://github.com/myxiaoao/ThinkPHP5ValetDriver.
  */
-class ThinkPHP5ValetDriver extends BasicValetDriver
+class ThinkPHPValetDriver extends BasicValetDriver
 {
     /**
      * Determine if the driver serves the request.
@@ -24,7 +24,7 @@ class ThinkPHP5ValetDriver extends BasicValetDriver
      */
     public function serves($sitePath, $siteName, $uri)
     {
-        return file_exists($sitePath.'/thinkphp/base.php') && file_exists($sitePath.'/think');
+        return file_exists($sitePath.'/think');
     }
 
     /**
@@ -38,10 +38,7 @@ class ThinkPHP5ValetDriver extends BasicValetDriver
      */
     public function isStaticFile($sitePath, $siteName, $uri)
     {
-        if (
-            $this->isActualFile($staticFilePath = $sitePath.'/public'.$uri)
-            && '.php' !== pathinfo($staticFilePath, PATHINFO_EXTENSION)
-        ) {
+        if ($this->isActualFile($staticFilePath = "$sitePath/public$uri")) {
             return $staticFilePath;
         }
 
@@ -60,11 +57,10 @@ class ThinkPHP5ValetDriver extends BasicValetDriver
     public function frontControllerPath($sitePath, $siteName, $uri)
     {
         $_GET['s'] = $uri;
-        $_SERVER['PHP_SELF'] = '/index.php';
-        $_SERVER['SCRIPT_FILENAME'] = $sitePath.'/public/index.php';
-        $_SERVER['SCRIPT_NAME'] = '/index.php';
+        $_SERVER['SCRIPT_FILENAME'] = "$sitePath/public/index.php";
+        $_SERVER['SCRIPT_NAME'] = $_SERVER['PHP_SELF'].'/index.php';
         $_SERVER['SERVER_NAME'] = $_SERVER['HTTP_HOST'];
 
-        return $sitePath.'/public/index.php';
+        return $_SERVER['SCRIPT_FILENAME'];
     }
 }
