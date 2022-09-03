@@ -11,7 +11,7 @@
 /**
  * This is modified from https://github.com/liboysoft/thinkphp3-valet-driver.
  */
-class ThinkPHP3ValetDriver extends ValetDriver
+class ThinkPHP3ValetDriver extends BasicValetDriver
 {
     /**
      * Determine if the driver serves the request.
@@ -38,10 +38,7 @@ class ThinkPHP3ValetDriver extends ValetDriver
      */
     public function isStaticFile($sitePath, $siteName, $uri)
     {
-        if (
-            $this->isActualFile($staticFilePath = $sitePath.$uri)
-            && '.php' !== pathinfo($staticFilePath, PATHINFO_EXTENSION)
-        ) {
+        if ($this->isActualFile($staticFilePath = $sitePath.$uri)) {
             return $staticFilePath;
         }
 
@@ -61,10 +58,9 @@ class ThinkPHP3ValetDriver extends ValetDriver
     {
         $_GET['s'] = $uri;
         $_SERVER['SCRIPT_FILENAME'] = $sitePath.'/index.php';
-        $_SERVER['SCRIPT_NAME'] = '/index.php';
+        $_SERVER['SCRIPT_NAME'] = $_SERVER['PHP_SELF'] = '/index.php';
         $_SERVER['SERVER_NAME'] = $_SERVER['HTTP_HOST'];
-        $_SERVER['PHP_SELF'] = '/index.php';
 
-        return $sitePath.'/index.php';
+        return $_SERVER['SCRIPT_FILENAME'];
     }
 }
