@@ -2,7 +2,7 @@
     "name": "guanguans/valet-drivers",
     "description": "Drivers for laravel-valet. - laravel-valet 的驱动程序。",
     "license": "MIT",
-    "type": "metapackage",
+    "type": "library",
     "keywords": [
         "valet",
         "driver",
@@ -34,8 +34,10 @@
     "prefer-stable": true,
     "autoload": {
         "classmap": [
-            "drivers",
-            "ComposerScripts.php"
+            ""
+        ],
+        "exclude-from-classmap": [
+            ".php-cs-fixer.php"
         ]
     },
     "config": {
