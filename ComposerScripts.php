@@ -42,7 +42,7 @@ class ComposerScripts
 
         $files = glob(__DIR__.'/drivers/*.php');
         foreach ($files as $file) {
-            $filesystem->copyAsUser($file, $to = $driversDirectory.'/'.$basename =pathinfo($file, PATHINFO_BASENAME));
+            $filesystem->copyAsUser($file, $driversDirectory.'/'.$basename = pathinfo($file, PATHINFO_BASENAME));
             $io->write("<warning>The `$basename` have been installed</warning>");
         }
 
