@@ -8,10 +8,7 @@
  * This source file is subject to the MIT license that is bundled.
  */
 
-/**
- * This is modified from https://github.com/chinaphp/yii2-valet-driver.
- */
-class Yii2ValetDriver extends ValetDriver
+class ThinkPHP5ValetDriver extends ValetDriver
 {
     /**
      * Determine if the driver serves the request.
@@ -24,8 +21,7 @@ class Yii2ValetDriver extends ValetDriver
      */
     public function serves($sitePath, $siteName, $uri)
     {
-        return (file_exists($sitePath.'/../vendor/yiisoft/yii2/Yii.php') || file_exists($sitePath.'/vendor/yiisoft/yii2/Yii.php'))
-               && file_exists($sitePath.'/yii');
+        return file_exists($sitePath.'/thinkphp/base.php') && file_exists($sitePath.'/think');
     }
 
     /**
@@ -39,12 +35,6 @@ class Yii2ValetDriver extends ValetDriver
      */
     public function isStaticFile($sitePath, $siteName, $uri)
     {
-        // this works for domains called code assets
-        // for example your site name product.{valet-domen} assets domen is assets.product.{valet-domen}
-        if (0 === strpos($siteName, 'assets')) {
-            return $sitePath.$uri;
-        }
-
         if (
             $this->isActualFile($staticFilePath = $sitePath.'/web/'.$uri)
             && '.php' !== pathinfo($staticFilePath, PATHINFO_EXTENSION)
@@ -66,23 +56,12 @@ class Yii2ValetDriver extends ValetDriver
      */
     public function frontControllerPath($sitePath, $siteName, $uri)
     {
-        $uriPath = explode('/', $uri)[1];
-
-        if (file_exists($sitePath.'/web/'.$uriPath.'/index.php') && ! empty($uriPath)) {
-            $_SERVER['DOCUMENT_ROOT'] = $sitePath;
-            $_SERVER['PHP_SELF'] = '/'.$uriPath.'/index.php';
-            $_SERVER['SCRIPT_FILENAME'] = $sitePath.'/web/'.$uriPath.'/index.php';
-            $_SERVER['SCRIPT_NAME'] = '/'.$uriPath.'/index.php';
-
-            return $sitePath.'/web/'.$uriPath.'/index.php';
-        }
-
-        $_SERVER['DOCUMENT_ROOT'] = $sitePath;
+        $_GET['s'] = $uri;
         $_SERVER['PHP_SELF'] = '/index.php';
-        $_SERVER['SERVER_NAME'] = $_SERVER['HTTP_HOST'];
-        $_SERVER['SCRIPT_FILENAME'] = $sitePath.'/web/index.php';
+        $_SERVER['SCRIPT_FILENAME'] = $sitePath.'/public/index.php';
         $_SERVER['SCRIPT_NAME'] = '/index.php';
+        $_SERVER['SERVER_NAME'] = $_SERVER['HTTP_HOST'];
 
-        return $sitePath.'/web/index.php';
+        return $sitePath.'/public/index.php';
     }
 }
