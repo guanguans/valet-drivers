@@ -25,6 +25,7 @@
     },
     "require-dev": {
         "brainmaestro/composer-git-hooks": "^2.8 || ^3.0",
+        "composer/composer": "^1.0||^2.0",
         "friendsofphp/php-cs-fixer": "^3.0",
         "laravel/valet": "^3.0",
         "overtrue/phplint": "^2.0 || ^3.0 || ^4.0 || ^5.0"
@@ -33,7 +34,8 @@
     "prefer-stable": true,
     "autoload": {
         "classmap": [
-            "drivers"
+            "drivers",
+            "ComposerScripts.php"
         ]
     },
     "config": {
@@ -56,10 +58,12 @@
     "scripts": {
         "post-install-cmd": [
             "@cghooks add --ignore-lock",
-            "@cghooks update"
+            "@cghooks update",
+            "@install-driver"
         ],
         "post-update-cmd": [
-            "@cghooks update"
+            "@cghooks update",
+            "@install-driver"
         ],
         "post-autoload-dump": [],
         "cghooks": "./vendor/bin/cghooks",
@@ -70,6 +74,7 @@
             "@style-lint",
             "@mark-finish"
         ],
+        "install-driver": "Guanguans\\ValetDrivers\\ComposerScripts::installDriver",
         "mark-finish": "printf '\\n!\\n!\\t\\033[0;32m%s\\033[0m\\n!\\n\\n' \"Finished\"",
         "mark-separate": "printf '\\n!\\n!\\t\\033[0;33m%s\\033[0m\\n!\\n\\n' \"----------------\"",
         "mark-start": "printf '\\n!\\n!\\t\\033[0;36m%s\\033[0m\\n!\\n\\n' \"Started\"",
