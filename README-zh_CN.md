@@ -9,8 +9,7 @@
 
 ## 安装
 
-```bash
-```
+拷贝驱动 `drivers/*Driver.php` 文件到 valet 配置驱动文件夹 `~/.config/valet/Drivers`。
 
 ## 贡献指南
 

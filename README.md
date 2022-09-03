@@ -9,8 +9,7 @@
 
 ## Installation
 
-```bash
-```
+Copy the driver `drivers/*Driver.php` file to the valet config driver folder `~/.config/valet/Drivers`.
 
 ## Contributing
 
