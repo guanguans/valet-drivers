@@ -71,7 +71,13 @@ class Yii2ValetDriver extends BasicValetDriver
     public function frontControllerPath($sitePath, $siteName, $uri)
     {
         if (! file_exists("$sitePath/web")) {
-            exit('This may be the advanced version. Please link the subdirectory(backend/frontend) to Valet.');
+            exit("<pre>
+                <p style='font-size: 18px;'>
+                    This may be the advanced version.\n 
+                    Please link the sub-application directory to Valet(e.g. `cd frontend/ && valet link frontend-yii2`).\n
+                    Then visit the linked URL(<a href='http://frontend-yii2.test' target='_blank'>http://frontend-yii2.test</a>).
+                <p>
+            </pre>");
         }
 
         $_SERVER['DOCUMENT_ROOT'] = $sitePath;

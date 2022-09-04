@@ -24,7 +24,7 @@ class ThinkPHPValetDriver extends BasicValetDriver
      */
     public function serves($sitePath, $siteName, $uri)
     {
-        return file_exists($sitePath.'/think');
+        return file_exists($sitePath.'/think') && file_exists($sitePath.'/public/index.php');
     }
 
     /**
