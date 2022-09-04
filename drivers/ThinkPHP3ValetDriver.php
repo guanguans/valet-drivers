@@ -24,7 +24,7 @@ class ThinkPHP3ValetDriver extends BasicValetDriver
      */
     public function serves($sitePath, $siteName, $uri)
     {
-        return file_exists($sitePath.'/ThinkPHP') && file_exists($sitePath.'/index.php');
+        return file_exists($sitePath.'/ThinkPHP') && file_exists($this->asRootPhpIndexFile($sitePath));
     }
 
     /**
