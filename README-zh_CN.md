@@ -11,6 +11,10 @@
 
 拷贝驱动 `drivers/*Driver.php` 文件到 valet 配置驱动文件夹 `~/.config/valet/Drivers`。
 
+```shell
+$ curl -o ~/.config/valet/Drivers/Yii2ValetDriver.php https://raw.githubusercontent.com/guanguans/valet-drivers/main/drivers/Yii2ValetDriver.php
+```
+
 ## 贡献指南
 
 请参阅 [CONTRIBUTING](.github/CONTRIBUTING.md) 有关详细信息。

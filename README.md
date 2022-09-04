@@ -11,6 +11,10 @@
 
 Copy the driver `drivers/*Driver.php` file to the valet config driver folder `~/.config/valet/Drivers`.
 
+```shell
+$ curl -o ~/.config/valet/Drivers/Yii2ValetDriver.php https://raw.githubusercontent.com/guanguans/valet-drivers/main/drivers/Yii2ValetDriver.php
+```
+
 ## Contributing
 
 Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.

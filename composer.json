@@ -2,7 +2,7 @@
     "name": "guanguans/valet-drivers",
     "description": "Drivers for laravel-valet. - laravel-valet 的驱动程序。",
     "license": "MIT",
-    "type": "library",
+    "type": "metapackage",
     "keywords": [
         "valet",
         "driver",
@@ -21,23 +21,21 @@
         }
     ],
     "require": {
-        "php": ">=7.0",
-        "laravel/valet": "^3.0"
+        "php": ">=7.0"
     },
     "require-dev": {
         "brainmaestro/composer-git-hooks": "^2.8 || ^3.0",
         "composer/composer": "^1.0 || ^2.0",
         "friendsofphp/php-cs-fixer": "^3.0",
+        "laravel/valet": "^3.0",
         "overtrue/phplint": "^2.0 || ^3.0 || ^4.0 || ^5.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "autoload": {
         "classmap": [
-            ""
-        ],
-        "exclude-from-classmap": [
-            ".php-cs-fixer.php"
+            "drivers",
+            "ComposerScripts.php"
         ]
     },
     "config": {
@@ -60,12 +58,10 @@
     "scripts": {
         "post-install-cmd": [
             "@cghooks add --ignore-lock",
-            "@cghooks update",
-            "@install-driver"
+            "@cghooks update"
         ],
         "post-update-cmd": [
-            "@cghooks update",
-            "@install-driver"
+            "@cghooks update"
         ],
         "post-autoload-dump": [],
         "cghooks": "./vendor/bin/cghooks",
