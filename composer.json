@@ -1,6 +1,6 @@
 {
     "name": "guanguans/valet-drivers",
-    "description": "Drivers for laravel-valet. - laravel-valet 的驱动程序。",
+    "description": "A list of drivers for laravel-valet. - laravel-valet 的驱动列表。",
     "license": "MIT",
     "type": "metapackage",
     "keywords": [

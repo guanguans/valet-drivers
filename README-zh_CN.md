@@ -2,7 +2,7 @@
 
 [简体中文](README-zh_CN.md) | [ENGLISH](README.md)
 
-> Drivers for laravel-valet. - laravel-valet 的驱动程序。
+> A list of drivers for laravel-valet. - laravel-valet 的驱动列表。
 
 [![phplint](https://github.com/guanguans/valet-drivers/actions/workflows/phplint.yml/badge.svg)](https://github.com/guanguans/valet-drivers/actions/workflows/phplint.yml)
 [![check & fix styling](https://github.com/guanguans/valet-drivers/actions/workflows/php-cs-fixer.yml/badge.svg)](https://github.com/guanguans/valet-drivers/actions/workflows/php-cs-fixer.yml)
