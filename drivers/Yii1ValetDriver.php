@@ -55,8 +55,8 @@ class Yii1ValetDriver extends BasicValetDriver
     {
         $_SERVER['DOCUMENT_ROOT'] = $sitePath;
         $_SERVER['SERVER_NAME'] = $_SERVER['HTTP_HOST'];
-        $_SERVER['SCRIPT_FILENAME'] = $this->asRootPhpIndexFile($sitePath);
         $_SERVER['SCRIPT_NAME'] = $_SERVER['PHP_SELF'] = '/index.php';
+        $_SERVER['SCRIPT_FILENAME'] = $this->asRootPhpIndexFile($sitePath);
 
         return $_SERVER['SCRIPT_FILENAME'];
     }

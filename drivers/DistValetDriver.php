@@ -24,7 +24,7 @@ class DistValetDriver extends BasicValetDriver
      */
     public function serves($sitePath, $siteName, $uri)
     {
-        return file_exists($sitePath.'/dist/index.html');
+        return file_exists($this->asHtmlIndexFileInDirectory($sitePath, '/dist'));
     }
 
     /**
@@ -56,6 +56,6 @@ class DistValetDriver extends BasicValetDriver
      */
     public function frontControllerPath($sitePath, $siteName, $uri)
     {
-        return $sitePath.'/dist/index.html';
+        return $this->asHtmlIndexFileInDirectory($sitePath, '/dist');
     }
 }

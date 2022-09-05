@@ -70,6 +70,8 @@
             "@phplint",
             "@mark-separate",
             "@style-lint",
+            "@mark-separate",
+            "@install-driver",
             "@mark-finish"
         ],
         "install-driver": "Guanguans\\ValetDrivers\\ComposerScripts::installDriver",

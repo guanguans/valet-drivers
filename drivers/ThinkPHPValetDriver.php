@@ -57,9 +57,10 @@ class ThinkPHPValetDriver extends BasicValetDriver
     public function frontControllerPath($sitePath, $siteName, $uri)
     {
         $_GET['s'] = $uri;
-        $_SERVER['SCRIPT_FILENAME'] = "$sitePath/public/index.php";
-        $_SERVER['SCRIPT_NAME'] = $_SERVER['PHP_SELF'].'/index.php';
+        $_SERVER['DOCUMENT_ROOT'] = $sitePath;
         $_SERVER['SERVER_NAME'] = $_SERVER['HTTP_HOST'];
+        $_SERVER['SCRIPT_NAME'] = $_SERVER['PHP_SELF'] = '/index.php';
+        $_SERVER['SCRIPT_FILENAME'] = $this->asPublicPhpIndexFile($sitePath);
 
         return $_SERVER['SCRIPT_FILENAME'];
     }

@@ -83,8 +83,8 @@ class Yii2ValetDriver extends BasicValetDriver
         $_SERVER['DOCUMENT_ROOT'] = $sitePath;
         // $_SERVER['SERVER_ADDR'] = '127.0.0.1';
         $_SERVER['SERVER_NAME'] = $_SERVER['HTTP_HOST'];
-        $_SERVER['SCRIPT_FILENAME'] = "$sitePath/web/index.php";
         $_SERVER['SCRIPT_NAME'] = $_SERVER['PHP_SELF'] = '/index.php';
+        $_SERVER['SCRIPT_FILENAME'] = $this->asPhpIndexFileInDirectory($sitePath, '/web');
 
         return $_SERVER['SCRIPT_FILENAME'];
     }

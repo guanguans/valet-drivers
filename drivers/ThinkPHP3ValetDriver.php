@@ -38,7 +38,8 @@ class ThinkPHP3ValetDriver extends BasicValetDriver
      */
     public function isStaticFile($sitePath, $siteName, $uri)
     {
-        if ($this->isActualFile($staticFilePath = $sitePath.$uri)) {
+        if ($this->isActualFile($staticFilePath = $this->asActualFile($sitePath, $uri)
+        )) {
             return $staticFilePath;
         }
 
@@ -57,9 +58,10 @@ class ThinkPHP3ValetDriver extends BasicValetDriver
     public function frontControllerPath($sitePath, $siteName, $uri)
     {
         $_GET['s'] = $uri;
-        $_SERVER['SCRIPT_FILENAME'] = $sitePath.'/index.php';
-        $_SERVER['SCRIPT_NAME'] = $_SERVER['PHP_SELF'] = '/index.php';
+        $_SERVER['DOCUMENT_ROOT'] = $sitePath;
         $_SERVER['SERVER_NAME'] = $_SERVER['HTTP_HOST'];
+        $_SERVER['SCRIPT_NAME'] = $_SERVER['PHP_SELF'] = '/index.php';
+        $_SERVER['SCRIPT_FILENAME'] = $this->asRootPhpIndexFile($sitePath);
 
         return $_SERVER['SCRIPT_FILENAME'];
     }
