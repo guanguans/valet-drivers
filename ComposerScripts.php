@@ -20,10 +20,11 @@ class ComposerScripts
         require_once $event->getComposer()->getConfig()->get('vendor-dir') . '/autoload.php';
 
         $io = $event->getIO();
-        for (;;) {
+        for (; ;) {
             $wantToInstall = strtolower(
                 $io->ask(
-                    "<info>Do you want to install the valet driver?</info> [yes<fg=yellow>(default)</>|no]:\n> "
+                    "<info>Do you want to install the valet driver?</info> [yes<fg=yellow>(default)</>|no]:\n> ",
+                    'yes'
                 )
             );
 
@@ -31,7 +32,7 @@ class ComposerScripts
                 return;
             }
 
-            if ('yes' === $wantToInstall || 'y' === $wantToInstall || empty($wantToInstall)) {
+            if ('yes' === $wantToInstall || 'y' === $wantToInstall) {
                 break;
             }
 
