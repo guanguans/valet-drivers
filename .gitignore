@@ -25,3 +25,4 @@ Homestead.json
 .idea/
 composer.lock
 .php-cs-fixer.cache
+.DS_Store
