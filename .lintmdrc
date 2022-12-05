@@ -8,7 +8,7 @@
         "no-long-code": [
             2,
             {
-                "length": 100,
+                "length": 150,
                 "exclude": [
                     "dot"
                 ]

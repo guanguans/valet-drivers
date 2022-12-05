@@ -27,8 +27,7 @@
         "brainmaestro/composer-git-hooks": "^2.8 || ^3.0",
         "composer/composer": "^1.0 || ^2.0",
         "friendsofphp/php-cs-fixer": "^3.0",
-        "laravel/valet": "^3.0",
-        "overtrue/phplint": "^2.0 || ^3.0 || ^4.0 || ^5.0"
+        "laravel/valet": "^3.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -67,7 +66,9 @@
         "cghooks": "./vendor/bin/cghooks",
         "checks": [
             "@mark-start",
-            "@phplint",
+            "@md-lint",
+            "@mark-separate",
+            "@lint",
             "@mark-separate",
             "@style-lint",
             "@mark-separate",
@@ -75,12 +76,15 @@
             "@mark-finish"
         ],
         "install-driver": "Guanguans\\ValetDrivers\\ComposerScripts::installDriver",
+        "lint": [
+            "find . \\( -path ./vendor \\) -prune -o \\( -name '*.php' \\) -exec php -l {} \\; 2>&1 | (! grep -v \"^No syntax errors detected\")",
+            "for dir in ./drivers; do find $dir -type f -name '*.php' -exec php -l {} \\; 2>&1 | (! grep -v '^No syntax errors detected'); done"
+        ],
         "mark-finish": "printf '\\n!\\n!\\t\\033[0;32m%s\\033[0m\\n!\\n\\n' \"Finished\"",
         "mark-separate": "printf '\\n!\\n!\\t\\033[0;33m%s\\033[0m\\n!\\n\\n' \"----------------\"",
         "mark-start": "printf '\\n!\\n!\\t\\033[0;36m%s\\033[0m\\n!\\n\\n' \"Started\"",
         "md-fix": "@md-lint --fix",
         "md-lint": "lint-md --config .lintmdrc ./*.md ./.github/ ./docs/",
-        "phplint": "./vendor/bin/phplint --no-cache",
         "post-merge": [
             "composer install"
         ],

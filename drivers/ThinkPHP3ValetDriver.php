@@ -38,8 +38,7 @@ class ThinkPHP3ValetDriver extends BasicValetDriver
      */
     public function isStaticFile($sitePath, $siteName, $uri)
     {
-        if ($this->isActualFile($staticFilePath = $this->asActualFile($sitePath, $uri)
-        )) {
+        if ($this->isActualFile($staticFilePath = $this->asActualFile($sitePath, $uri))) {
             return $staticFilePath;
         }
 
