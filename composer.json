@@ -21,13 +21,13 @@
         }
     ],
     "require": {
-        "php": ">=7.0"
+        "php": ">=7.1"
     },
     "require-dev": {
         "brainmaestro/composer-git-hooks": "^2.8 || ^3.0",
         "composer/composer": "^1.0 || ^2.0",
         "friendsofphp/php-cs-fixer": "^3.0",
-        "laravel/valet": "^3.0"
+        "laravel/valet": "^4.1"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

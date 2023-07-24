@@ -8,6 +8,10 @@
  * This source file is subject to the MIT license that is bundled.
  */
 
+namespace Valet\Drivers\Custom;
+
+use Valet\Drivers\BasicValetDriver;
+
 /**
  * This is modified from https://github.com/chinaphp/yii2-valet-driver.
  *
@@ -21,31 +25,13 @@
  */
 class Yii2ValetDriver extends BasicValetDriver
 {
-    /**
-     * Determine if the driver serves the request.
-     *
-     * @param string $sitePath
-     * @param string $siteName
-     * @param string $uri
-     *
-     * @return bool
-     */
-    public function serves($sitePath, $siteName, $uri)
+    public function serves(string $sitePath, string $siteName, string $uri): bool
     {
         return (file_exists($sitePath.'/../yii') && file_exists($sitePath.'/../vendor/yiisoft/yii2/Yii.php'))
                || (file_exists($sitePath.'/yii') && file_exists($sitePath.'/vendor/yiisoft/yii2/Yii.php'));
     }
 
-    /**
-     * Determine if the incoming request is for a static file.
-     *
-     * @param string $sitePath
-     * @param string $siteName
-     * @param string $uri
-     *
-     * @return string|false
-     */
-    public function isStaticFile($sitePath, $siteName, $uri)
+    public function isStaticFile(string $sitePath, string $siteName, string $uri)
     {
         // this works for domains called code assets
         if (0 === strpos($siteName, 'assets')) {
@@ -59,16 +45,7 @@ class Yii2ValetDriver extends BasicValetDriver
         return false;
     }
 
-    /**
-     * Get the fully resolved path to the application's front controller.
-     *
-     * @param string $sitePath
-     * @param string $siteName
-     * @param string $uri
-     *
-     * @return string
-     */
-    public function frontControllerPath($sitePath, $siteName, $uri)
+    public function frontControllerPath(string $sitePath, string $siteName, string $uri): ?string
     {
         if (! file_exists("$sitePath/web")) {
             exit("<pre>
@@ -84,7 +61,7 @@ class Yii2ValetDriver extends BasicValetDriver
         // $_SERVER['SERVER_ADDR'] = '127.0.0.1';
         $_SERVER['SERVER_NAME'] = $_SERVER['HTTP_HOST'];
         $_SERVER['SCRIPT_NAME'] = $_SERVER['PHP_SELF'] = '/index.php';
-        $_SERVER['SCRIPT_FILENAME'] = $this->asPhpIndexFileInDirectory($sitePath, '/web');
+        $_SERVER['SCRIPT_FILENAME'] = $sitePath.'/web/index.php';
 
         return $_SERVER['SCRIPT_FILENAME'];
     }
