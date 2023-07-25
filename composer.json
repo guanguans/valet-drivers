@@ -27,7 +27,7 @@
         "brainmaestro/composer-git-hooks": "^2.8 || ^3.0",
         "composer/composer": "^1.0 || ^2.0",
         "friendsofphp/php-cs-fixer": "^3.0",
-        "laravel/valet": "^4.1"
+        "laravel/valet": "^4.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -65,30 +65,24 @@
         "post-autoload-dump": [],
         "cghooks": "./vendor/bin/cghooks",
         "checks": [
-            "@mark-start",
+            "@composer-validate",
             "@md-lint",
-            "@mark-separate",
             "@lint",
-            "@mark-separate",
             "@style-lint",
-            "@mark-separate",
-            "@install-driver",
-            "@mark-finish"
+            "@install-driver"
         ],
+        "composer-validate": "@composer validate --check-lock --strict --ansi -v",
         "install-driver": "Guanguans\\ValetDrivers\\ComposerScripts::installDriver",
         "lint": [
-            "find . \\( -path ./vendor \\) -prune -o \\( -name '*.php' \\) -exec php -l {} \\; 2>&1 | (! grep -v \"^No syntax errors detected\")",
-            "for dir in ./drivers; do find $dir -type f -name '*.php' -exec php -l {} \\; 2>&1 | (! grep -v '^No syntax errors detected'); done"
+            "for DIR in .; do find $DIR -maxdepth 1 -type f -name '*.php' -type f ! -name 'xxx.php' -exec php -l {} \\; 2>&1 | (! grep -v '^No syntax errors detected'); done",
+            "for DIR in ./drivers; do find $DIR -type f -name '*.php' -type f ! -name 'xxx.php' -exec php -l {} \\; 2>&1 | (! grep -v '^No syntax errors detected'); done"
         ],
-        "mark-finish": "printf '\\n!\\n!\\t\\033[0;32m%s\\033[0m\\n!\\n\\n' \"Finished\"",
-        "mark-separate": "printf '\\n!\\n!\\t\\033[0;33m%s\\033[0m\\n!\\n\\n' \"----------------\"",
-        "mark-start": "printf '\\n!\\n!\\t\\033[0;36m%s\\033[0m\\n!\\n\\n' \"Started\"",
         "md-fix": "@md-lint --fix",
         "md-lint": "lint-md --config .lintmdrc ./*.md ./.github/ ./docs/",
         "post-merge": [
             "composer install"
         ],
-        "style-fix": "./vendor/bin/php-cs-fixer fix --using-cache=no --config=.php-cs-fixer.php --ansi",
-        "style-lint": "./vendor/bin/php-cs-fixer fix --using-cache=no --config=.php-cs-fixer.php --diff --dry-run --ansi"
+        "style-fix": "@php ./vendor/bin/php-cs-fixer fix --using-cache=no --config=.php-cs-fixer.php --ansi -v",
+        "style-lint": "@style-fix --diff --dry-run"
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is part of the guanguans/valet-drivers.
  *
@@ -8,80 +10,56 @@
  * This source file is subject to the MIT license that is bundled.
  */
 
-$header = <<<EOF
-This file is part of the guanguans/valet-drivers.
+use PhpCsFixer\Config;
+use PhpCsFixer\Finder;
 
-(c) guanguans <ityaozm@gmail.com>
+$header = <<<'HEADER'
+    This file is part of the guanguans/valet-drivers.
 
-This source file is subject to the MIT license that is bundled.
-EOF;
+    (c) guanguans <ityaozm@gmail.com>
 
-$finder = PhpCsFixer\Finder::create()
+    This source file is subject to the MIT license that is bundled.
+    HEADER;
+
+$finder = Finder::create()
     ->in([
         __DIR__.'/drivers',
     ])
-    ->append([
-        __DIR__.'/.php-cs-fixer.php',
-        // __DIR__.'/ComposerScripts.php',
-    ])
-    ->exclude([
-        '.github/',
-        'doc/',
-        'docs/',
-        'vendor/',
-    ])
-    ->notPath([
-        'bootstrap/*',
-        'storage/*',
-        'resources/view/mail/*',
-        'vendor/*',
-    ])
+    ->append(glob(__DIR__.'/{*,.*}.php', GLOB_BRACE))
     ->name('*.php')
-    ->notName([
-        '*.blade.php',
-        '_ide_helper.php',
-    ])
     ->ignoreDotFiles(true)
-    ->ignoreVCS(true);
+    ->ignoreVCS(true)
+;
 
-return (new PhpCsFixer\Config())
+return (new Config())
+    ->setFinder($finder)
+    ->setRiskyAllowed(false)
+    ->setUsingCache(false)
+    ->setCacheFile(__DIR__.'/.php-cs-fixer.cache')
     ->setRules([
-        // '@DoctrineAnnotation' => true,
+        '@PHP70Migration' => true,
+        // '@PHP70Migration:risky' => true,
+        '@PHP71Migration' => true,
+        // '@PHP71Migration:risky' => true,
+        // '@PHP73Migration' => true,
+        // '@PHP74Migration' => true,
+        // '@PHP74Migration:risky' => true,
+        // '@PHP80Migration' => true,
         // '@PHP80Migration:risky' => true,
-        // '@PHPUnit84Migration:risky' => true,
-        // '@PSR12:risky' => true,
-        '@Symfony' => true,
+        // '@PHP81Migration' => true,
+        // '@PHP82Migration' => true,
+
+        '@PhpCsFixer' => true,
+        // '@PhpCsFixer:risky' => true,
+
+        // comment
         'header_comment' => [
             'header' => $header,
             'comment_type' => 'PHPDoc',
+            'location' => 'after_declare_strict',
+            'separate' => 'both',
         ],
-        'blank_line_before_statement' => [
-            'statements' => ['break', 'continue', 'declare', 'return', 'throw', 'try'],
-        ],
-        // 'comment_to_phpdoc' => [
-        //     'ignored_tags' => [],
-        // ],
-        // 'declare_strict_types' => true,
-        'method_argument_space' => [
-            'on_multiline' => 'ensure_fully_multiline',
-        ],
-        'not_operator_with_successor_space' => true,
-        'no_useless_return' => true,
-        'no_useless_else' => true,
-        // 'is_null' => true,
-        'return_assignment' => true,
-        'multiline_comment_opening_closing' => true,
-        'align_multiline_comment' => [
-            'comment_type' => 'phpdocs_only',
-        ],
-        'phpdoc_to_comment' => [],
-        'phpdoc_var_annotation_correct_order' => true,
-        // 'php_unit_construct' => [
-        //     'assertions' => ['assertEquals', 'assertSame', 'assertNotEquals', 'assertNotSame'],
-        // ],
-        'array_indentation' => true,
-        'method_chaining_indentation' => true,
-        'statement_indentation' => true,
+
+        'empty_loop_condition' => false,
     ])
-    // ->setRiskyAllowed(true)
-    ->setFinder($finder);
+;

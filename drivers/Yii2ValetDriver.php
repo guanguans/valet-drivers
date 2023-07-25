@@ -38,7 +38,7 @@ class Yii2ValetDriver extends BasicValetDriver
             return $sitePath.$uri;
         }
 
-        if ($this->isActualFile($staticFilePath = "$sitePath/web$uri")) {
+        if ($this->isActualFile($staticFilePath = "{$sitePath}/web{$uri}")) {
             return $staticFilePath;
         }
 
@@ -47,7 +47,7 @@ class Yii2ValetDriver extends BasicValetDriver
 
     public function frontControllerPath(string $sitePath, string $siteName, string $uri): ?string
     {
-        if (! file_exists("$sitePath/web")) {
+        if (!file_exists("{$sitePath}/web")) {
             exit("<pre>
                 <p style='font-size: 18px;'>
                     This may be the advanced version.\n 

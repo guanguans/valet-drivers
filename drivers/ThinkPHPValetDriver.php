@@ -24,7 +24,7 @@ class ThinkPHPValetDriver extends BasicValetDriver
 
     public function isStaticFile(string $sitePath, string $siteName, string $uri)
     {
-        if ($this->isActualFile($staticFilePath = "$sitePath/public$uri")) {
+        if ($this->isActualFile($staticFilePath = "{$sitePath}/public{$uri}")) {
             return $staticFilePath;
         }
 
