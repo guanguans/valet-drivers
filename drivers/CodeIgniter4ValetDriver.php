@@ -16,12 +16,12 @@ class CodeIgniter4ValetDriver extends BasicValetDriver
 {
     public function serves(string $sitePath, string $siteName, string $uri): bool
     {
-        return file_exists($sitePath.'/vendor/codeigniter4/framework') && file_exists($sitePath.'/public/index.php');
+        return file_exists("{$sitePath}/vendor/codeigniter4/framework") && file_exists("{$sitePath}/public/index.php");
     }
 
     public function isStaticFile(string $sitePath, string $siteName, string $uri)
     {
-        if ($this->isActualFile($staticFilePath = $sitePath.'/public'.$uri)) {
+        if ($this->isActualFile($staticFilePath = "{$sitePath}/public{$uri}")) {
             return $staticFilePath;
         }
 
@@ -33,7 +33,7 @@ class CodeIgniter4ValetDriver extends BasicValetDriver
         $_SERVER['DOCUMENT_ROOT'] = $sitePath;
         $_SERVER['SERVER_NAME'] = $_SERVER['HTTP_HOST'];
         $_SERVER['SCRIPT_NAME'] = $_SERVER['PHP_SELF'] = '/index.php';
-        $_SERVER['SCRIPT_FILENAME'] = $sitePath.'/public/index.php';
+        $_SERVER['SCRIPT_FILENAME'] = "{$sitePath}/public/index.php";
 
         return $_SERVER['SCRIPT_FILENAME'];
     }

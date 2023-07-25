@@ -27,8 +27,8 @@ class Yii2ValetDriver extends BasicValetDriver
 {
     public function serves(string $sitePath, string $siteName, string $uri): bool
     {
-        return (file_exists($sitePath.'/../yii') && file_exists($sitePath.'/../vendor/yiisoft/yii2/Yii.php'))
-               || (file_exists($sitePath.'/yii') && file_exists($sitePath.'/vendor/yiisoft/yii2/Yii.php'));
+        return (file_exists("{$sitePath}/../yii") && file_exists("{$sitePath}/../vendor/yiisoft/yii2/Yii.php"))
+               || (file_exists("{$sitePath}/yii") && file_exists("{$sitePath}/vendor/yiisoft/yii2/Yii.php"));
     }
 
     public function isStaticFile(string $sitePath, string $siteName, string $uri)
@@ -61,7 +61,7 @@ class Yii2ValetDriver extends BasicValetDriver
         // $_SERVER['SERVER_ADDR'] = '127.0.0.1';
         $_SERVER['SERVER_NAME'] = $_SERVER['HTTP_HOST'];
         $_SERVER['SCRIPT_NAME'] = $_SERVER['PHP_SELF'] = '/index.php';
-        $_SERVER['SCRIPT_FILENAME'] = $sitePath.'/web/index.php';
+        $_SERVER['SCRIPT_FILENAME'] = "{$sitePath}/web/index.php";
 
         return $_SERVER['SCRIPT_FILENAME'];
     }
