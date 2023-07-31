@@ -8,6 +8,15 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 
+<a name="2.0.1"></a>
+## [2.0.1] - 2023-07-31
+### Docs
+- **readme:** Update Chinese README
+
+### Refactor
+- **file-structure:** Rename 'drivers' directory to 'Drivers'
+
+
 <a name="2.0.0"></a>
 ## [2.0.0] - 2023-07-25
 ### Feat
@@ -32,5 +41,6 @@ All notable changes to this project will be documented in this file.
 - Merge pull request [#1](https://github.com/guanguans/monorepo-builder-worker/issues/1) from guanguans/dependabot/github_actions/actions/stale-6
 
 
-[Unreleased]: https://github.com/guanguans/monorepo-builder-worker/compare/2.0.0...HEAD
+[Unreleased]: https://github.com/guanguans/monorepo-builder-worker/compare/2.0.1...HEAD
+[2.0.1]: https://github.com/guanguans/monorepo-builder-worker/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/guanguans/monorepo-builder-worker/compare/1.0.0...2.0.0
