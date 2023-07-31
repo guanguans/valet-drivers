@@ -44,7 +44,7 @@ class ComposerScripts
             $filesystem->mkdirAsUser($driversDirectory);
         }
 
-        $files = glob(__DIR__.'/drivers/*ValetDriver.php');
+        $files = glob(__DIR__.'/Drivers/*ValetDriver.php');
         foreach ($files as $file) {
             $filesystem->copyAsUser($file, $driversDirectory.'/'.pathinfo($file, PATHINFO_BASENAME));
             $io->write('<info>The `'.pathinfo($file, PATHINFO_FILENAME).'` have been installed</info>');

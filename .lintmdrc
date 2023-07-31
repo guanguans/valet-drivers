@@ -1,6 +1,6 @@
 {
     "excludeFiles": [
-        "drivers/",
+        "Drivers/",
         "vendor/"
     ],
     "rules": {

@@ -35,7 +35,7 @@
     "prefer-stable": true,
     "autoload": {
         "classmap": [
-            "drivers",
+            "Drivers",
             "ComposerScripts.php"
         ]
     },
@@ -79,7 +79,7 @@
         "install-driver": "Guanguans\\ValetDrivers\\ComposerScripts::installDriver",
         "lint": [
             "for DIR in .; do find $DIR -maxdepth 1 -type f -name '*.php' -type f ! -name 'xxx.php' -exec php -l {} \\; 2>&1 | (! grep -v '^No syntax errors detected'); done",
-            "for DIR in ./drivers; do find $DIR -type f -name '*.php' -type f ! -name 'xxx.php' -exec php -l {} \\; 2>&1 | (! grep -v '^No syntax errors detected'); done"
+            "for DIR in ./Drivers; do find $DIR -type f -name '*.php' -type f ! -name 'xxx.php' -exec php -l {} \\; 2>&1 | (! grep -v '^No syntax errors detected'); done"
         ],
         "md-fix": "@md-lint --fix",
         "md-lint": "lint-md --config .lintmdrc ./*.md ./.github/ ./docs/",

@@ -23,7 +23,7 @@ $header = <<<'HEADER'
 
 $finder = Finder::create()
     ->in([
-        __DIR__.'/drivers',
+        __DIR__.'/Drivers',
     ])
     ->append(glob(__DIR__.'/{*,.*}.php', GLOB_BRACE))
     ->name('*.php')
