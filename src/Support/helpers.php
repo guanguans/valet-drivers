@@ -12,3 +12,36 @@ declare(strict_types=1);
  */
 
 namespace Guanguans\ValetDrivers\Support;
+
+if (!\function_exists('Guanguans\MonorepoBuilderWorker\Support\classes')) {
+    /**
+     * @see \get_declared_classes()
+     * @see \get_declared_interfaces()
+     * @see \get_declared_traits()
+     * @see \DG\BypassFinals::enable()
+     *
+     * @return list<class-string>
+     */
+    function classes(): array
+    {
+        /** @var list<list<string>> $classes */
+        static $classes = [];
+
+        if ($classes) {
+            return $classes;
+        }
+
+        foreach (spl_autoload_functions() as $loader) {
+            if (\is_array($loader) && $loader[0] instanceof ClassLoader) {
+                $classes[] = array_keys($loader[0]->getClassMap());
+            }
+        }
+
+        return array_unique(array_merge(
+            get_declared_classes(),
+            get_declared_interfaces(),
+            get_declared_traits(),
+            ...$classes
+        ));
+    }
+}

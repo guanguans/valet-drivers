@@ -49,7 +49,27 @@
         "laravel/valet": "^4.8",
         "nette/utils": "^4.0",
         "rector/rector": "^2.0",
-        "symfony/var-dumper": "^6.0 || ^7.0"
+        "symfony/var-dumper": "^6.0 || ^7.0",
+        "bamarni/composer-bin-plugin": "^1.8",
+        "mockery/mockery": "^1.6",
+        "pestphp/pest": "^1.23 || ^2.0 || ^3.0",
+        "pestphp/pest-plugin-faker": "^1.0 || ^2.0 || ^3.0",
+        "php-mock/php-mock-phpunit": "^2.13",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan-deprecation-rules": "^2.0",
+        "phpstan/phpstan-webmozart-assert": "^2.0",
+        "rector/swiss-knife": "^2.1",
+        "rector/type-perfect": "^2.0",
+        "shipmonk/composer-dependency-analyser": "^1.8",
+        "shipmonk/phpstan-baseline-per-identifier": "^2.1",
+        "spatie/pest-plugin-snapshots": "^1.1 || ^2.0",
+        "spaze/phpstan-disallowed-calls": "^4.4",
+        "symplify/phpstan-extensions": "^12.0",
+        "symplify/phpstan-rules": "^14.6",
+        "tomasvotruba/class-leak": "^2.0",
+        "tomasvotruba/type-coverage": "^2.0",
+        "yamadashy/phpstan-friendly-formatter": "^1.2"
     },
     "suggest": {
         "laravel/valet": "Required to use the drivers."
@@ -74,7 +94,10 @@
     },
     "config": {
         "allow-plugins": {
-            "ergebnis/composer-normalize": true
+            "bamarni/composer-bin-plugin": true,
+            "ergebnis/composer-normalize": true,
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
         },
         "apcu-autoloader": true,
         "classmap-authoritative": true,
