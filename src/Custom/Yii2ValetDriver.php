@@ -37,7 +37,7 @@ class Yii2ValetDriver extends BasicValetDriver
     public function isStaticFile(string $sitePath, string $siteName, string $uri)
     {
         // this works for domains called code assets
-        if (0 === strncmp($siteName, 'assets', 6)) {
+        if (str_starts_with($siteName, 'assets')) {
             return $sitePath.$uri;
         }
 

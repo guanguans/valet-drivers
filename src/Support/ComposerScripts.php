@@ -50,6 +50,12 @@ class ComposerScripts
 
         $files = glob(__DIR__.'/Drivers/*ValetDriver.php');
 
+        if (!\is_array($files)) {
+            $io->error('No valet driver found.');
+
+            exit(1);
+        }
+
         foreach ($files as $file) {
             $filesystem->copyAsUser($file, $driversDirectory.'/'.pathinfo($file, \PATHINFO_BASENAME));
             $io->write('<info>The `'.pathinfo($file, \PATHINFO_FILENAME).'` have been installed</info>');

@@ -4,15 +4,15 @@
     "license": "MIT",
     "type": "metapackage",
     "keywords": [
-        "valet",
+        "development",
+        "development-environment",
         "driver",
+        "env",
+        "environment",
         "laravel",
         "lnmp",
         "mnmp",
-        "development environment",
-        "development",
-        "environment",
-        "env"
+        "valet"
     ],
     "authors": [
         {
@@ -37,6 +37,7 @@
         "php": ">=8.0"
     },
     "require-dev": {
+        "bamarni/composer-bin-plugin": "^1.8",
         "brainmaestro/composer-git-hooks": "^3.0",
         "composer/composer": "^2.8",
         "ergebnis/composer-normalize": "^2.45",
@@ -47,11 +48,8 @@
         "guanguans/monorepo-builder-worker": "^2.0",
         "illuminate/support": "^9.52 || ^10.0 || ^11.0 || ^12.0",
         "laravel/valet": "^4.8",
-        "nette/utils": "^4.0",
-        "rector/rector": "^2.0",
-        "symfony/var-dumper": "^6.0 || ^7.0",
-        "bamarni/composer-bin-plugin": "^1.8",
         "mockery/mockery": "^1.6",
+        "nette/utils": "^4.0",
         "pestphp/pest": "^1.23 || ^2.0 || ^3.0",
         "pestphp/pest-plugin-faker": "^1.0 || ^2.0 || ^3.0",
         "php-mock/php-mock-phpunit": "^2.13",
@@ -59,12 +57,14 @@
         "phpstan/phpstan": "^2.1",
         "phpstan/phpstan-deprecation-rules": "^2.0",
         "phpstan/phpstan-webmozart-assert": "^2.0",
+        "rector/rector": "^2.0",
         "rector/swiss-knife": "^2.1",
         "rector/type-perfect": "^2.0",
         "shipmonk/composer-dependency-analyser": "^1.8",
         "shipmonk/phpstan-baseline-per-identifier": "^2.1",
         "spatie/pest-plugin-snapshots": "^1.1 || ^2.0",
         "spaze/phpstan-disallowed-calls": "^4.4",
+        "symfony/var-dumper": "^6.0 || ^7.0",
         "symplify/phpstan-extensions": "^12.0",
         "symplify/phpstan-rules": "^14.6",
         "tomasvotruba/class-leak": "^2.0",
@@ -100,7 +100,7 @@
             "phpstan/extension-installer": true
         },
         "apcu-autoloader": true,
-        "classmap-authoritative": true,
+        "classmap-authoritative": false,
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true
@@ -193,7 +193,7 @@
         "lint": [
             "@putenvs",
             "for DIR in .; do find $DIR -maxdepth 1 -type f -name '*.php' -type f ! -name 'xxx.php' -exec $PHP80 -l {} \\; 2>&1 | (! grep -v '^No syntax errors detected'); done",
-            "for DIR in ./Drivers; do find $DIR -type f -name '*.php' -type f ! -name 'xxx.php' -exec $PHP80 -l {} \\; 2>&1 | (! grep -v '^No syntax errors detected'); done"
+            "for DIR in ./src ./tests; do find $DIR -type f -name '*.php' -type f ! -name 'xxx.php' -exec $PHP80 -l {} \\; 2>&1 | (! grep -v '^No syntax errors detected'); done"
         ],
         "mark-finish": "printf '\\n!\\n!\\t\\033[0;32m%s\\033[0m\\n!\\n\\n' \"Finished\"",
         "mark-separate": "printf '\\n!\\n!\\t\\033[0;33m%s\\033[0m\\n!\\n\\n' \"----------------\"",

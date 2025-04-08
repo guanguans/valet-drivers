@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Guanguans\ValetDrivers\Support;
 
+use Composer\Autoload\ClassLoader;
+
 if (!\function_exists('Guanguans\ValetDrivers\Support\classes')) {
     /**
      * @see \get_declared_classes()
