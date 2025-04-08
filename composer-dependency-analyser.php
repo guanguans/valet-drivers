@@ -26,9 +26,12 @@ return (new Configuration)
         __DIR__.'/src/Support/ComposerScripts.php',
         __DIR__.'/tests/',
     ])
-    ->ignoreErrorsOnPackages(
-        [
-            'laravel/valet',
-        ],
-        [ErrorType::DEV_DEPENDENCY_IN_PROD],
-    );
+    // ->ignoreErrorsOnPackages(
+    //     [
+    //         'laravel/valet',
+    //     ],
+    //     [ErrorType::DEV_DEPENDENCY_IN_PROD],
+    // )
+    ->ignoreUnknownClasses([
+        'Valet\Drivers\BasicValetDriver',
+    ]);

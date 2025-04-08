@@ -29,7 +29,7 @@ use Symplify\RuleDocGenerator\Exception\ShouldNotHappenException;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 use Webmozart\Assert\Assert;
-use function Guanguans\MonorepoBuilderWorker\Support\classes;
+use function Guanguans\ValetDrivers\Support\classes;
 
 class NewToNewAnonymousImplementsRector extends AbstractRector implements ConfigurableRectorInterface, MinPhpVersionInterface
 {
@@ -50,12 +50,12 @@ class NewToNewAnonymousImplementsRector extends AbstractRector implements Config
                         new \Exception('Testing');
                         CODE_SAMPLE,
                     <<<'CODE_SAMPLE'
-                        new class('Testing') extends \Exception implements \Guanguans\MonorepoBuilderWorker\Contracts\ThrowableContract
+                        new class('Testing') extends \Exception implements \Guanguans\ValetDrivers\Contracts\ThrowableContract
                         {
                         };
                         CODE_SAMPLE,
                     [
-                        'Guanguans\MonorepoBuilderWorker\Contracts\ThrowableContract',
+                        'Guanguans\ValetDrivers\Contracts\ThrowableContract',
                     ],
                 ),
             ],
