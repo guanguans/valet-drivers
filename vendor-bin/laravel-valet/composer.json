@@ -1,0 +1,5 @@
+{
+    "require-dev": {
+        "laravel/valet": "^4.8"
+    }
+}

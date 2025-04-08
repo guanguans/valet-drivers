@@ -47,7 +47,6 @@
         "guanguans/ai-commit": "dev-main",
         "guanguans/monorepo-builder-worker": "^2.0",
         "illuminate/support": "^9.52 || ^10.0 || ^11.0 || ^12.0",
-        "laravel/valet": "^4.8",
         "mockery/mockery": "^1.6",
         "nette/utils": "^4.0",
         "pestphp/pest": "^1.23 || ^2.0 || ^3.0",
