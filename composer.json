@@ -160,8 +160,8 @@
             "@style-lint",
             "@composer-dependency-analyser",
             "@test",
-            "@phpstan",
             "@rector-dry-run",
+            "@phpstan",
             "@install-driver"
         ],
         "class-leak": "@php ./vendor/bin/class-leak --ansi -v",

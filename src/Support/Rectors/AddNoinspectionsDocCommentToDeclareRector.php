@@ -45,6 +45,7 @@ class AddNoinspectionsDocCommentToDeclareRector extends AbstractRector implement
                          /** @noinspection AnonymousFunctionStaticInspection */
                          /** @noinspection StaticClosureCanBeUsedInspection */
                          /** @noinspection PhpVoidFunctionResultUsedInspection */
+                         declare(strict_types=1);
                         CODE_SAMPLE,
                     <<<'CODE_SAMPLE'
                          /** @noinspection AnonymousFunctionStaticInspection */
@@ -53,6 +54,7 @@ class AddNoinspectionsDocCommentToDeclareRector extends AbstractRector implement
                          /** @noinspection PhpUnhandledExceptionInspection */
                          /** @noinspection StaticClosureCanBeUsedInspection */
                          /** @noinspection PhpVoidFunctionResultUsedInspection */
+                         declare(strict_types=1);
                         CODE_SAMPLE,
                     [
                         'AnonymousFunctionStaticInspection',

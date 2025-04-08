@@ -31,7 +31,7 @@ use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 use Webmozart\Assert\Assert;
 use function Guanguans\ValetDrivers\Support\classes;
 
-class NewToNewAnonymousImplementsRector extends AbstractRector implements ConfigurableRectorInterface, MinPhpVersionInterface
+class NewExceptionToNewAnonymousExtendsExceptionImplementsRector extends AbstractRector implements ConfigurableRectorInterface, MinPhpVersionInterface
 {
     /** @var list<class-string> */
     private array $implements = [];
@@ -43,7 +43,7 @@ class NewToNewAnonymousImplementsRector extends AbstractRector implements Config
     final public function getRuleDefinition(): RuleDefinition
     {
         return new RuleDefinition(
-            'New to new anonymous implements',
+            'New exception to new anonymous extends exception implements',
             [
                 new ConfiguredCodeSample(
                     <<<'CODE_SAMPLE'
