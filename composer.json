@@ -57,10 +57,20 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "autoload": {
+        "psr-4": {
+            "Guanguans\\ValetDrivers\\": "src"
+        },
         "classmap": [
-            "Drivers",
-            "ComposerScripts.php"
+            "src/Custom"
+        ],
+        "files": [
+            "src/Support/helpers.php"
         ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Guanguans\\ValetDriversTests\\": "tests"
+        }
     },
     "config": {
         "allow-plugins": {
@@ -154,7 +164,7 @@
         "facades-lint": "@facades-update -- --lint",
         "facades-update": "/usr/local/opt/php@8.1/bin/php -f ./bin/facades.php",
         "infection": "@php ./vendor/bin/infection --test-framework=pest --show-mutations --threads=4 --ansi -v",
-        "install-driver": "Guanguans\\ValetDrivers\\ComposerScripts::installDriver",
+        "install-driver": "Guanguans\\ValetDrivers\\Support\\ComposerScripts::installDriver",
         "json-lint": "@php ./vendor/bin/jsonlint *.json .*rc",
         "lint": [
             "@putenvs",
