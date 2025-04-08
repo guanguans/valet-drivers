@@ -151,7 +151,6 @@
         "changelog-major": "@changelog --major",
         "changelog-minor": "@changelog --minor",
         "changelog-patch": "@changelog --patch",
-        "check-and-fix-namespace-prefix": "Guanguans\\MonorepoBuilderWorker\\Support\\ComposerScripts::checkAndFixNamespacePrefix",
         "checks": [
             "@composer-normalize",
             "@composer-validate",
@@ -161,6 +160,8 @@
             "@yaml-lint",
             "@style-lint",
             "@composer-dependency-analyser",
+            "@test",
+            "@phpstan",
             "@rector-dry-run",
             "@install-driver"
         ],

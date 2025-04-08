@@ -42,7 +42,7 @@ use Symplify\MonorepoBuilder\Release\Contract\ReleaseWorker\ReleaseWorkerInterfa
 return RectorConfig::configure()
     ->withPaths([
         __DIR__.'/src/',
-        // __DIR__.'/tests/',
+        __DIR__.'/tests/',
         ...glob(__DIR__.'/{*,.*}.php', \GLOB_BRACE),
         __DIR__.'/composer-updater',
     ])
@@ -104,7 +104,7 @@ return RectorConfig::configure()
         'StaticClosureCanBeUsedInspection',
     ])
     ->withConfiguredRule(NewToNewAnonymousImplementsRector::class, [
-        'Guanguans\MonorepoBuilderWorker\Contracts\ThrowableContract',
+        'Guanguans\ValetDrivers\Contracts\ThrowableContract',
     ])
     ->withConfiguredRule(RemoveAnnotationRector::class, [
         'codeCoverageIgnore',
@@ -128,7 +128,7 @@ return RectorConfig::configure()
             ],
             static function (array $carry, string $func): array {
                 /** @see https://github.com/laravel/framework/blob/11.x/src/Illuminate/Support/functions.php */
-                $carry[$func] = "Guanguans\\MonorepoBuilderWorker\\Support\\$func";
+                $carry[$func] = "Guanguans\\ValetDrivers\\Support\\$func";
 
                 return $carry;
             },

@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Guanguans\ValetDrivers\Support;
 
-if (!\function_exists('Guanguans\MonorepoBuilderWorker\Support\classes')) {
+if (!\function_exists('Guanguans\ValetDrivers\Support\classes')) {
     /**
      * @see \get_declared_classes()
      * @see \get_declared_interfaces()
