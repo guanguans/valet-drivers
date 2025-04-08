@@ -14,13 +14,18 @@ declare(strict_types=1);
 namespace Guanguans\ValetDrivers\Support;
 
 use Composer\Script\Event;
+use Rector\Config\RectorConfig;
+use Rector\DependencyInjection\LazyContainerFactory;
+use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\Console\Output\ConsoleOutput;
+use Symfony\Component\Console\Style\SymfonyStyle;
 use Valet\Filesystem;
 
 class ComposerScripts
 {
     public static function installDriver(Event $event): void
     {
-        require_once $event->getComposer()->getConfig()->get('vendor-dir').'/autoload.php';
+        self::requireAutoload($event);
 
         $io = $event->getIO();
 
@@ -48,9 +53,9 @@ class ComposerScripts
             $filesystem->mkdirAsUser($driversDirectory);
         }
 
-        $files = glob(__DIR__.'/Drivers/*ValetDriver.php');
+        $files = glob(__DIR__.'/../Custom/*ValetDriver.php');
 
-        if (!\is_array($files)) {
+        if (empty($files)) {
             $io->error('No valet driver found.');
 
             exit(1);
@@ -59,6 +64,50 @@ class ComposerScripts
         foreach ($files as $file) {
             $filesystem->copyAsUser($file, $driversDirectory.'/'.pathinfo($file, \PATHINFO_BASENAME));
             $io->write('<info>The `'.pathinfo($file, \PATHINFO_FILENAME).'` have been installed</info>');
+        }
+    }
+
+    /**
+     * @noinspection PhpUnused
+     */
+    public static function makeRectorConfig(): RectorConfig
+    {
+        return (new LazyContainerFactory)->create();
+    }
+
+    /**
+     * @noinspection PhpUnused
+     */
+    public static function makeSymfonyStyle(): SymfonyStyle
+    {
+        return new SymfonyStyle(new ArgvInput, new ConsoleOutput);
+    }
+
+    public static function requireAutoload(?Event $event = null): void
+    {
+        if ($event instanceof Event) {
+            $vendorDir = $event->getComposer()->getConfig()->get('vendor-dir');
+
+            require_once $vendorDir.'/autoload.php';
+
+            require_once $vendorDir.'/../vendor-bin/laravel-valet/vendor/autoload.php';
+
+            return;
+        }
+
+        $possibleAutoloadPaths = [
+            __DIR__.'/../../vendor/autoload.php',
+            __DIR__.'/../../../../../vendor/autoload.php',
+            __DIR__.'/../../vendor-bin/laravel-valet/vendor/autoload.php',
+            __DIR__.'/../../../../../vendor-bin/laravel-valet/vendor/autoload.php',
+        ];
+
+        foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {
+            if (file_exists($possibleAutoloadPath)) {
+                require_once $possibleAutoloadPath;
+
+                break;
+            }
         }
     }
 }
