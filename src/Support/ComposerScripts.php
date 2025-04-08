@@ -1,11 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * This file is part of the guanguans/valet-drivers.
+ * Copyright (c) 2022-2025 guanguans<ityaozm@gmail.com>
  *
- * (c) guanguans <ityaozm@gmail.com>
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
  *
- * This source file is subject to the MIT license that is bundled.
+ * @see https://github.com/guanguans/valet-drivers
  */
 
 namespace Guanguans\ValetDrivers\Support;
@@ -15,12 +18,13 @@ use Valet\Filesystem;
 
 class ComposerScripts
 {
-    public static function installDriver(Event $event)
+    public static function installDriver(Event $event): void
     {
         require_once $event->getComposer()->getConfig()->get('vendor-dir').'/autoload.php';
 
         $io = $event->getIO();
-        for (;;) {
+
+        while (true) {
             $wantToInstall = strtolower(
                 $io->ask(
                     "<info>Do you want to install the valet driver?</info> [yes<fg=yellow>(default)</>|no]:\n> ",
@@ -39,15 +43,16 @@ class ComposerScripts
             $io->error('Please answer yes, y, no, or n.');
         }
 
-        if (!($filesystem = new Filesystem())->isDir($driversDirectory = VALET_HOME_PATH.'/Drivers')) {
+        if (!($filesystem = new Filesystem)->isDir($driversDirectory = VALET_HOME_PATH.'/Drivers')) {
             $io->write("<fg=yellow>Creating the directory({$driversDirectory}) for driver...</>");
             $filesystem->mkdirAsUser($driversDirectory);
         }
 
         $files = glob(__DIR__.'/Drivers/*ValetDriver.php');
+
         foreach ($files as $file) {
-            $filesystem->copyAsUser($file, $driversDirectory.'/'.pathinfo($file, PATHINFO_BASENAME));
-            $io->write('<info>The `'.pathinfo($file, PATHINFO_FILENAME).'` have been installed</info>');
+            $filesystem->copyAsUser($file, $driversDirectory.'/'.pathinfo($file, \PATHINFO_BASENAME));
+            $io->write('<info>The `'.pathinfo($file, \PATHINFO_FILENAME).'` have been installed</info>');
         }
     }
 }

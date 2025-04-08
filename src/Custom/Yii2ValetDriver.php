@@ -1,11 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * This file is part of the guanguans/valet-drivers.
+ * Copyright (c) 2022-2025 guanguans<ityaozm@gmail.com>
  *
- * (c) guanguans <ityaozm@gmail.com>
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
  *
- * This source file is subject to the MIT license that is bundled.
+ * @see https://github.com/guanguans/valet-drivers
  */
 
 namespace Valet\Drivers\Custom;
@@ -48,13 +51,17 @@ class Yii2ValetDriver extends BasicValetDriver
     public function frontControllerPath(string $sitePath, string $siteName, string $uri): ?string
     {
         if (!file_exists("{$sitePath}/web")) {
-            exit("<pre>
-                <p style='font-size: 18px;'>
-                    This may be the advanced version.\n 
-                    Please link the sub-application directory to Valet(e.g. `cd frontend/ && valet link frontend-yii2`).\n
-                    Then visit the linked URL(<a href='http://frontend-yii2.test' target='_blank'>http://frontend-yii2.test</a>).
-                <p>
-            </pre>");
+            exit(
+                <<<HTML
+                    <pre>
+                        <p style='font-size: 18px;'>
+                            This may be the advanced version.\n
+                            Please link the sub-application directory to Valet(e.g. `cd frontend/ && valet link frontend-yii2`).\n
+                            Then visit the linked URL(<a href='http://frontend-yii2.test' target='_blank'>http://frontend-yii2.test</a>).
+                        <p>
+                    </pre>
+                    HTML
+            );
         }
 
         $_SERVER['DOCUMENT_ROOT'] = $sitePath;
