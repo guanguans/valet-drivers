@@ -10,4 +10,4 @@ clover.xml
 composer.lock
 phpunit.xml
 psalm.xml
-tests.*
+/tests.*
