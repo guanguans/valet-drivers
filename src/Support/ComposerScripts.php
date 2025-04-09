@@ -49,7 +49,7 @@ final class ComposerScripts
         }
 
         if (!($filesystem = new Filesystem)->isDir($driversDirectory = VALET_HOME_PATH.'/Drivers')) {
-            $io->write("<fg=yellow>Creating the directory({$driversDirectory}) for driver...</>");
+            $io->write("<fg=yellow>Creating the directory($driversDirectory) for driver...</>");
             $filesystem->mkdirAsUser($driversDirectory);
         }
 

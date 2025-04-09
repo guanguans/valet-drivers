@@ -1,5 +1,7 @@
 <?php
 
+/** @noinspection PhpMultipleClassDeclarationsInspection */
+
 declare(strict_types=1);
 
 /**
@@ -17,10 +19,12 @@ use Composer\Autoload\ClassLoader;
 
 if (!\function_exists('Guanguans\ValetDrivers\Support\classes')) {
     /**
+     * @noinspection PhpUndefinedNamespaceInspection
+     *
+     * @see \DG\BypassFinals::enable()
      * @see \get_declared_classes()
      * @see \get_declared_interfaces()
      * @see \get_declared_traits()
-     * @see \DG\BypassFinals::enable()
      *
      * @return list<class-string>
      */

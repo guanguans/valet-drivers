@@ -85,7 +85,6 @@ final class AddNoinspectionsDocCommentToDeclareRector extends AbstractRector imp
     }
 
     /**
-     * @noinspection PhpUndefinedMethodInspection
      * @noinspection NullPointerExceptionInspection
      *
      * @param \PhpParser\Node\Stmt\Declare_ $node

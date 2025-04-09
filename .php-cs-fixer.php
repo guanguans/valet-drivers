@@ -153,6 +153,7 @@ $ruleSet = Php80::create()
             'align' => 'left',
             'spacing' => 1,
             'tags' => [
+                'see',
                 'method',
                 'param',
                 'property',
@@ -178,6 +179,7 @@ $ruleSet = Php80::create()
         'phpdoc_order' => [
             'order' => [
                 'noinspection',
+                'see',
                 'phan-suppress',
                 'phpcsSuppress',
                 'phpstan-ignore',
@@ -202,7 +204,7 @@ $ruleSet = Php80::create()
                 'depends',
                 'group',
                 'internal',
-                // 'method',
+                'method',
                 'mixin',
                 'property',
                 'property-read',

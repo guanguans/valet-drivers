@@ -1,5 +1,7 @@
 <?php
 
+/** @noinspection PhpUnusedAliasInspection */
+
 declare(strict_types=1);
 
 /**
@@ -70,12 +72,12 @@ final class NewExceptionToNewAnonymousExtendsExceptionImplementsRector extends A
     }
 
     /**
-     * @param \PhpParser\Node\Expr\New_ $node
-     *
      * @see \Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfoFactory
      * @see \Rector\Comments\NodeDocBlock\DocBlockUpdater
      * @see \RectorPrefix202503\print_node()
      * @see \RectorPrefix202503\print_node()
+     *
+     * @param \PhpParser\Node\Expr\New_ $node
      */
     public function refactor(Node $node): ?Node
     {
@@ -146,10 +148,10 @@ final class NewExceptionToNewAnonymousExtendsExceptionImplementsRector extends A
     }
 
     /**
-     * @param class-string $className
-     *
      * @see \is_subclass_of()
      * @see \is_a()
+     *
+     * @param class-string $className
      */
     private function isSubclassesOf(string $className): bool
     {
