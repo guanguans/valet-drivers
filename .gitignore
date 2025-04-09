@@ -2,6 +2,7 @@
 .history/
 .idea/
 vendor/
+vendor-bin/projects/
 
 .DS_Store
 .php-cs-fixer.cache
