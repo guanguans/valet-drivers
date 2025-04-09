@@ -71,7 +71,7 @@
         "yamadashy/phpstan-friendly-formatter": "^1.2"
     },
     "suggest": {
-        "laravel/valet": "Required to use the drivers."
+        "laravel/valet": "Required to use the driver [src/Drivers]."
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
@@ -155,7 +155,6 @@
             "@composer-validate",
             "@json-lint",
             "@md-lint",
-            "@lint",
             "@yaml-lint",
             "@style-lint",
             "@composer-dependency-analyser",

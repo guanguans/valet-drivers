@@ -97,11 +97,11 @@ return RectorConfig::configure()
     ])
     ->withConfiguredRule(AddNoinspectionsDocCommentToDeclareRector::class, [
         'AnonymousFunctionStaticInspection',
+        'PhpUnhandledExceptionInspection',
+        'StaticClosureCanBeUsedInspection',
         'NullPointerExceptionInspection',
         'PhpPossiblePolymorphicInvocationInspection',
         'PhpUndefinedClassInspection',
-        'PhpUnhandledExceptionInspection',
-        'StaticClosureCanBeUsedInspection',
     ])
     ->withConfiguredRule(NewExceptionToNewAnonymousExtendsExceptionImplementsRector::class, [
         'Guanguans\ValetDrivers\Contracts\ThrowableContract',

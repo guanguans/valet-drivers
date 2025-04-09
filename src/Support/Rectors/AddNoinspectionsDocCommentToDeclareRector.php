@@ -74,7 +74,6 @@ class AddNoinspectionsDocCommentToDeclareRector extends AbstractRector implement
     final public function configure(array $configuration): void
     {
         Assert::allStringNotEmpty($configuration);
-        sort($configuration);
         $this->inspections = $configuration;
     }
 
@@ -114,10 +113,6 @@ class AddNoinspectionsDocCommentToDeclareRector extends AbstractRector implement
 
                     if ($this->search($a) && !$this->search($b)) {
                         return -1;
-                    }
-
-                    if (($aIndex = $this->search($a)) && ($bIndex = $this->search($b))) {
-                        return $aIndex <=> $bIndex;
                     }
 
                     return strcmp($a->getText(), $b->getText());
