@@ -87,18 +87,18 @@ parameters:
         -
             message: '#^Out of 34 possible return types, only 28 \- 82\.3 %% actually have it\. Add more return types to get over 100 %%$#'
             paths:
-                - src/Custom/CodeIgniter4ValetDriver.php
-                - src/Custom/DistValetDriver.php
-                - src/Custom/ThinkPHP3ValetDriver.php
-                - src/Custom/ThinkPHPValetDriver.php
-                - src/Custom/Yii1ValetDriver.php
-                - src/Custom/Yii2ValetDriver.php
+                - src/Drivers/CodeIgniter4ValetDriver.php
+                - src/Drivers/DistValetDriver.php
+                - src/Drivers/ThinkPHP3ValetDriver.php
+                - src/Drivers/ThinkPHPValetDriver.php
+                - src/Drivers/Yii1ValetDriver.php
+                - src/Drivers/Yii2ValetDriver.php
         -
             message: '#^Returning false in non return bool class method\. Use null with type\|null instead or add bool return type$#'
             paths:
-               - src/Custom/CodeIgniter4ValetDriver.php
-               - src/Custom/DistValetDriver.php
-               - src/Custom/ThinkPHP3ValetDriver.php
-               - src/Custom/ThinkPHPValetDriver.php
-               - src/Custom/Yii1ValetDriver.php
-               - src/Custom/Yii2ValetDriver.php
+               - src/Drivers/CodeIgniter4ValetDriver.php
+               - src/Drivers/DistValetDriver.php
+               - src/Drivers/ThinkPHP3ValetDriver.php
+               - src/Drivers/ThinkPHPValetDriver.php
+               - src/Drivers/Yii1ValetDriver.php
+               - src/Drivers/Yii2ValetDriver.php

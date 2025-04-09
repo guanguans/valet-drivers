@@ -53,7 +53,7 @@ class ComposerScripts
             $filesystem->mkdirAsUser($driversDirectory);
         }
 
-        $files = glob(__DIR__.'/../Custom/*ValetDriver.php');
+        $files = glob(__DIR__.'/../Drivers/*ValetDriver.php');
 
         if (empty($files)) {
             $io->error('No valet driver found.');

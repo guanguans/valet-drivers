@@ -18,11 +18,11 @@
 
 ## Installation
 
-Copy the driver `src/Custom/*Driver.php` file to the valet config driver folder `~/.config/valet/Drivers`.
+Copy the driver `src/Drivers/*Driver.php` file to the valet config driver folder `~/.config/valet/Drivers`.
 
 ```shell
-curl -o ~/.config/valet/Drivers/Yii2ValetDriver.php https://raw.githubusercontent.com/guanguans/valet-drivers/main/src/Custom/Yii2ValetDriver.php
-wget -O ~/.config/valet/Drivers/Yii2ValetDriver.php https://raw.githubusercontent.com/guanguans/valet-drivers/main/src/Custom/Yii2ValetDriver.php
+curl -o ~/.config/valet/Drivers/Yii2ValetDriver.php https://raw.githubusercontent.com/guanguans/valet-drivers/main/src/Drivers/Yii2ValetDriver.php
+wget -O ~/.config/valet/Drivers/Yii2ValetDriver.php https://raw.githubusercontent.com/guanguans/valet-drivers/main/src/Drivers/Yii2ValetDriver.php
 ```
 
 ## Testing

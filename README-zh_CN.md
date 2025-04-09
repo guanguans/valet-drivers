@@ -18,11 +18,11 @@
 
 ## 安装
 
-拷贝驱动 `src/Custom/*Driver.php` 文件到 valet 配置驱动文件夹 `~/.config/valet/Drivers`。
+拷贝驱动 `src/Drivers/*Driver.php` 文件到 valet 配置驱动文件夹 `~/.config/valet/Drivers`。
 
 ```shell
-curl -o ~/.config/valet/Drivers/Yii2ValetDriver.php https://raw.githubusercontent.com/guanguans/valet-drivers/main/src/Custom/Yii2ValetDriver.php
-wget -O ~/.config/valet/Drivers/Yii2ValetDriver.php https://raw.githubusercontent.com/guanguans/valet-drivers/main/src/Custom/Yii2ValetDriver.php
+curl -o ~/.config/valet/Drivers/Yii2ValetDriver.php https://raw.githubusercontent.com/guanguans/valet-drivers/main/src/Drivers/Yii2ValetDriver.php
+wget -O ~/.config/valet/Drivers/Yii2ValetDriver.php https://raw.githubusercontent.com/guanguans/valet-drivers/main/src/Drivers/Yii2ValetDriver.php
 ```
 
 ## 测试

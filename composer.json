@@ -77,10 +77,10 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Guanguans\\ValetDrivers\\": "src"
+            "Guanguans\\ValetDrivers\\": "src/"
         },
         "classmap": [
-            "src/Custom"
+            "src/Drivers/"
         ],
         "files": [
             "src/Support/helpers.php"
