@@ -21,6 +21,7 @@
       <directory suffix=".php">src/</directory>
     </include>
     <exclude>
+      <directory>src/Drivers/</directory>
       <directory>src/Support/Rectors/</directory>
       <file>src/Support/ComposerScripts.php</file>
     </exclude>
@@ -30,6 +31,7 @@
       <directory suffix=".php">src/</directory>
     </include>
     <exclude>
+      <directory>src/Drivers//</directory>
       <directory>src/Support/Rectors/</directory>
       <file>src/Support/ComposerScripts.php</file>
     </exclude>
