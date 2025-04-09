@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Guanguans\ValetDriversTests;
 
-use DG\BypassFinals;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use phpmock\phpunit\PHPMock;
 use Spatie\Snapshots\MatchesSnapshots;
@@ -53,7 +52,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      */
     protected function setUp(): void
     {
-        // BypassFinals::enable(bypassReadOnly: false);
+        // \DG\BypassFinals::enable(bypassReadOnly: false);
     }
 
     /**

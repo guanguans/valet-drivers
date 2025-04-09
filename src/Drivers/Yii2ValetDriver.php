@@ -1,5 +1,8 @@
 <?php
 
+/** @noinspection GlobalVariableUsageInspection */
+/** @noinspection MissingParentCallInspection */
+/** @noinspection PhpIllegalPsrClassPathInspection */
 declare(strict_types=1);
 
 /**
@@ -30,10 +33,14 @@ final class Yii2ValetDriver extends BasicValetDriver
 {
     public function serves(string $sitePath, string $siteName, string $uri): bool
     {
-        return (file_exists("{$sitePath}/../yii") && file_exists("{$sitePath}/../vendor/yiisoft/yii2/Yii.php"))
-               || (file_exists("{$sitePath}/yii") && file_exists("{$sitePath}/vendor/yiisoft/yii2/Yii.php"));
+        return (file_exists("$sitePath/../yii") && file_exists("$sitePath/../vendor/yiisoft/yii2/Yii.php"))
+               || (file_exists("$sitePath/yii") && file_exists("$sitePath/vendor/yiisoft/yii2/Yii.php"));
     }
 
+    /**
+     * @noinspection PhpMissingReturnTypeInspection
+     * @noinspection MissingReturnTypeInspection
+     */
     public function isStaticFile(string $sitePath, string $siteName, string $uri)
     {
         // this works for domains called code assets
@@ -41,7 +48,7 @@ final class Yii2ValetDriver extends BasicValetDriver
             return $sitePath.$uri;
         }
 
-        if ($this->isActualFile($staticFilePath = "{$sitePath}/web{$uri}")) {
+        if ($this->isActualFile($staticFilePath = "$sitePath/web$uri")) {
             return $staticFilePath;
         }
 
@@ -49,11 +56,11 @@ final class Yii2ValetDriver extends BasicValetDriver
     }
 
     /**
-     * @return never-return|string
+     * @noinspection HttpUrlsUsage
      */
     public function frontControllerPath(string $sitePath, string $siteName, string $uri): string
     {
-        if (!file_exists("{$sitePath}/web")) {
+        if (!file_exists("$sitePath/web")) {
             exit(
                 <<<HTML
                     <pre>
@@ -71,7 +78,7 @@ final class Yii2ValetDriver extends BasicValetDriver
         // $_SERVER['SERVER_ADDR'] = '127.0.0.1';
         $_SERVER['SERVER_NAME'] = $_SERVER['HTTP_HOST'];
         $_SERVER['SCRIPT_NAME'] = $_SERVER['PHP_SELF'] = '/index.php';
-        $_SERVER['SCRIPT_FILENAME'] = "{$sitePath}/web/index.php";
+        $_SERVER['SCRIPT_FILENAME'] = "$sitePath/web/index.php";
 
         return $_SERVER['SCRIPT_FILENAME'];
     }

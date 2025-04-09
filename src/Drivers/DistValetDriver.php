@@ -1,5 +1,7 @@
 <?php
 
+/** @noinspection MissingParentCallInspection */
+/** @noinspection PhpIllegalPsrClassPathInspection */
 declare(strict_types=1);
 
 /**
@@ -22,12 +24,16 @@ final class DistValetDriver extends BasicValetDriver
 {
     public function serves(string $sitePath, string $siteName, string $uri): bool
     {
-        return file_exists("{$sitePath}/dist/index.html");
+        return file_exists("$sitePath/dist/index.html");
     }
 
+    /**
+     * @noinspection PhpMissingReturnTypeInspection
+     * @noinspection MissingReturnTypeInspection
+     */
     public function isStaticFile(string $sitePath, string $siteName, string $uri)
     {
-        if ($this->isActualFile($staticFilePath = "{$sitePath}/dist{$uri}")) {
+        if ($this->isActualFile($staticFilePath = "$sitePath/dist$uri")) {
             return $staticFilePath;
         }
 
@@ -36,6 +42,6 @@ final class DistValetDriver extends BasicValetDriver
 
     public function frontControllerPath(string $sitePath, string $siteName, string $uri): string
     {
-        return "{$sitePath}/dist/index.html";
+        return "$sitePath/dist/index.html";
     }
 }

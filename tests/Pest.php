@@ -9,7 +9,6 @@
 /** @noinspection PhpInconsistentReturnPointsInspection */
 /** @noinspection PhpInternalEntityUsedInspection */
 /** @noinspection PhpUnused */
-/** @noinspection PhpUnusedAliasInspection */
 declare(strict_types=1);
 
 /**
