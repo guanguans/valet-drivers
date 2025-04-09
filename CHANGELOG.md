@@ -8,6 +8,37 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 
+<a name="3.0.1"></a>
+## [3.0.1] - 2025-04-09
+### ✨ Features
+- **rector:** Add RemoveNamespaceRector for namespace management ([ed0f690](https://github.com/guanguans/valet-drivers/commit/ed0f690))
+
+### 🐞 Bug Fixes
+- **dependencies:** Update Laravel Valet integration ([1f11671](https://github.com/guanguans/valet-drivers/commit/1f11671))
+
+### 🎨 Styles
+- **driver:** use double quotes for file paths in Valet drivers ([55fd2dc](https://github.com/guanguans/valet-drivers/commit/55fd2dc))
+
+### 💅 Code Refactorings
+- Finalize classes and update PHP return types ([25b610d](https://github.com/guanguans/valet-drivers/commit/25b610d))
+- **psr-4:** Move Custom Drivers to Drivers Directory ([311d5e8](https://github.com/guanguans/valet-drivers/commit/311d5e8))
+- **rector:** Rename Implements Rector to Extends Exception ([54a1eb1](https://github.com/guanguans/valet-drivers/commit/54a1eb1))
+
+### 🏎 Performance Improvements
+- **rector:** Improve configuration for inspections handling ([b138a1d](https://github.com/guanguans/valet-drivers/commit/b138a1d))
+
+### ✅ Tests
+- **drivers:** Add CodeIgniter4ValetDriver test case ([6df36d6](https://github.com/guanguans/valet-drivers/commit/6df36d6))
+- **yii2-valet-driver:** Add unit test for Yii2ValetDriver ([066b58a](https://github.com/guanguans/valet-drivers/commit/066b58a))
+
+### 🤖 Continuous Integrations
+- **applications:** Add composer.json and .gitignore files ([724dad3](https://github.com/guanguans/valet-drivers/commit/724dad3))
+- **composer:** update composer scripts and remove unused applications ([cbaa5cb](https://github.com/guanguans/valet-drivers/commit/cbaa5cb))
+- **config:** update PHP CS Fixer and Rector configurations ([5fb98ea](https://github.com/guanguans/valet-drivers/commit/5fb98ea))
+- **phpstan:** Add new return type rules to phpstan configuration ([29d633d](https://github.com/guanguans/valet-drivers/commit/29d633d))
+- **workflows:** Change CI runners from Ubuntu to macOS ([4dad5d2](https://github.com/guanguans/valet-drivers/commit/4dad5d2))
+
+
 <a name="3.0.0"></a>
 ## [3.0.0] - 2025-04-08
 ### ✨ Features
@@ -86,7 +117,8 @@ All notable changes to this project will be documented in this file.
 - Merge pull request [#1](https://github.com/guanguans/valet-drivers/issues/1) from guanguans/dependabot/github_actions/actions/stale-6
 
 
-[Unreleased]: https://github.com/guanguans/valet-drivers/compare/3.0.0...HEAD
+[Unreleased]: https://github.com/guanguans/valet-drivers/compare/3.0.1...HEAD
+[3.0.1]: https://github.com/guanguans/valet-drivers/compare/3.0.0...3.0.1
 [3.0.0]: https://github.com/guanguans/valet-drivers/compare/2.0.1...3.0.0
 [2.0.1]: https://github.com/guanguans/valet-drivers/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/guanguans/valet-drivers/compare/1.0.0...2.0.0
