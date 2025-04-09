@@ -15,7 +15,7 @@ namespace Valet\Drivers\Custom;
 
 use Valet\Drivers\BasicValetDriver;
 
-class CodeIgniter4ValetDriver extends BasicValetDriver
+final class CodeIgniter4ValetDriver extends BasicValetDriver
 {
     public function serves(string $sitePath, string $siteName, string $uri): bool
     {
@@ -31,7 +31,7 @@ class CodeIgniter4ValetDriver extends BasicValetDriver
         return false;
     }
 
-    public function frontControllerPath(string $sitePath, string $siteName, string $uri): ?string
+    public function frontControllerPath(string $sitePath, string $siteName, string $uri): string
     {
         $_SERVER['DOCUMENT_ROOT'] = $sitePath;
         $_SERVER['SERVER_NAME'] = $_SERVER['HTTP_HOST'];

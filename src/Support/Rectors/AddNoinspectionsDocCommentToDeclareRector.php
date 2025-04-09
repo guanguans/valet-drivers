@@ -26,7 +26,7 @@ use Symplify\RuleDocGenerator\ValueObject\CodeSample\ConfiguredCodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 use Webmozart\Assert\Assert;
 
-class AddNoinspectionsDocCommentToDeclareRector extends AbstractRector implements ConfigurableRectorInterface
+final class AddNoinspectionsDocCommentToDeclareRector extends AbstractRector implements ConfigurableRectorInterface
 {
     /** @var list<string> */
     private array $inspections = [];
@@ -35,7 +35,7 @@ class AddNoinspectionsDocCommentToDeclareRector extends AbstractRector implement
      * @throws PoorDocumentationException
      * @throws ShouldNotHappenException
      */
-    final public function getRuleDefinition(): RuleDefinition
+    public function getRuleDefinition(): RuleDefinition
     {
         return new RuleDefinition(
             'Add noinspections doc comment to declare',
@@ -71,13 +71,13 @@ class AddNoinspectionsDocCommentToDeclareRector extends AbstractRector implement
     /**
      * @param list<string> $configuration
      */
-    final public function configure(array $configuration): void
+    public function configure(array $configuration): void
     {
         Assert::allStringNotEmpty($configuration);
         $this->inspections = $configuration;
     }
 
-    final public function getNodeTypes(): array
+    public function getNodeTypes(): array
     {
         return [
             Declare_::class,
@@ -90,7 +90,7 @@ class AddNoinspectionsDocCommentToDeclareRector extends AbstractRector implement
      *
      * @param \PhpParser\Node\Stmt\Declare_ $node
      */
-    final public function refactor(Node $node): Node
+    public function refactor(Node $node): Node
     {
         $originalCommentContents = collect($node->getComments())
             ->map(static fn (Comment $comment): string => $comment->getText())

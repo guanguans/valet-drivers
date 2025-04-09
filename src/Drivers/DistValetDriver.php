@@ -18,7 +18,7 @@ use Valet\Drivers\BasicValetDriver;
 /**
  * This is modified from https://github.com/DCzajkowski/DistValetDriver.
  */
-class DistValetDriver extends BasicValetDriver
+final class DistValetDriver extends BasicValetDriver
 {
     public function serves(string $sitePath, string $siteName, string $uri): bool
     {
@@ -34,7 +34,7 @@ class DistValetDriver extends BasicValetDriver
         return false;
     }
 
-    public function frontControllerPath(string $sitePath, string $siteName, string $uri): ?string
+    public function frontControllerPath(string $sitePath, string $siteName, string $uri): string
     {
         return "{$sitePath}/dist/index.html";
     }

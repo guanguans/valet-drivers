@@ -21,7 +21,7 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Valet\Filesystem;
 
-class ComposerScripts
+final class ComposerScripts
 {
     public static function installDriver(Event $event): void
     {

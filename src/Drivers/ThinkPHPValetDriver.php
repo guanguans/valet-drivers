@@ -18,7 +18,7 @@ use Valet\Drivers\BasicValetDriver;
 /**
  * This is modified from https://github.com/myxiaoao/ThinkPHP5ValetDriver.
  */
-class ThinkPHPValetDriver extends BasicValetDriver
+final class ThinkPHPValetDriver extends BasicValetDriver
 {
     public function serves(string $sitePath, string $siteName, string $uri): bool
     {
@@ -34,7 +34,7 @@ class ThinkPHPValetDriver extends BasicValetDriver
         return false;
     }
 
-    public function frontControllerPath(string $sitePath, string $siteName, string $uri): ?string
+    public function frontControllerPath(string $sitePath, string $siteName, string $uri): string
     {
         $_GET['s'] = $uri;
         $_SERVER['DOCUMENT_ROOT'] = $sitePath;

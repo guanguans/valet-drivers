@@ -15,7 +15,7 @@ namespace Valet\Drivers\Custom;
 
 use Valet\Drivers\BasicValetDriver;
 
-class Yii1ValetDriver extends BasicValetDriver
+final class Yii1ValetDriver extends BasicValetDriver
 {
     public function serves(string $sitePath, string $siteName, string $uri): bool
     {
@@ -31,7 +31,7 @@ class Yii1ValetDriver extends BasicValetDriver
         return false;
     }
 
-    public function frontControllerPath(string $sitePath, string $siteName, string $uri): ?string
+    public function frontControllerPath(string $sitePath, string $siteName, string $uri): string
     {
         $_SERVER['DOCUMENT_ROOT'] = $sitePath;
         $_SERVER['SERVER_NAME'] = $_SERVER['HTTP_HOST'];

@@ -31,7 +31,7 @@ use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 use Webmozart\Assert\Assert;
 use function Guanguans\ValetDrivers\Support\classes;
 
-class NewExceptionToNewAnonymousExtendsExceptionImplementsRector extends AbstractRector implements ConfigurableRectorInterface, MinPhpVersionInterface
+final class NewExceptionToNewAnonymousExtendsExceptionImplementsRector extends AbstractRector implements ConfigurableRectorInterface, MinPhpVersionInterface
 {
     /** @var list<class-string> */
     private array $implements = [];
@@ -40,7 +40,7 @@ class NewExceptionToNewAnonymousExtendsExceptionImplementsRector extends Abstrac
      * @throws PoorDocumentationException
      * @throws ShouldNotHappenException
      */
-    final public function getRuleDefinition(): RuleDefinition
+    public function getRuleDefinition(): RuleDefinition
     {
         return new RuleDefinition(
             'New exception to new anonymous extends exception implements',
@@ -62,7 +62,7 @@ class NewExceptionToNewAnonymousExtendsExceptionImplementsRector extends Abstrac
         );
     }
 
-    final public function getNodeTypes(): array
+    public function getNodeTypes(): array
     {
         return [
             New_::class,
@@ -77,7 +77,7 @@ class NewExceptionToNewAnonymousExtendsExceptionImplementsRector extends Abstrac
      * @see \RectorPrefix202503\print_node()
      * @see \RectorPrefix202503\print_node()
      */
-    final public function refactor(Node $node): ?Node
+    public function refactor(Node $node): ?Node
     {
         // // It's magical.
         // class_exists(ReleaseWorkerInterface::class);
@@ -106,6 +106,9 @@ class NewExceptionToNewAnonymousExtendsExceptionImplementsRector extends Abstrac
         );
     }
 
+    /**
+     * @return PhpVersion::PHP_70
+     */
     public function provideMinPhpVersion(): int
     {
         return PhpVersion::PHP_70;

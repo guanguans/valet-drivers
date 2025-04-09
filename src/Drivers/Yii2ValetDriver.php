@@ -26,7 +26,7 @@ use Valet\Drivers\BasicValetDriver;
  * $uri /index.php
  * ```
  */
-class Yii2ValetDriver extends BasicValetDriver
+final class Yii2ValetDriver extends BasicValetDriver
 {
     public function serves(string $sitePath, string $siteName, string $uri): bool
     {
@@ -48,7 +48,10 @@ class Yii2ValetDriver extends BasicValetDriver
         return false;
     }
 
-    public function frontControllerPath(string $sitePath, string $siteName, string $uri): ?string
+    /**
+     * @return never-return|string
+     */
+    public function frontControllerPath(string $sitePath, string $siteName, string $uri): string
     {
         if (!file_exists("{$sitePath}/web")) {
             exit(
