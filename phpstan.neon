@@ -85,7 +85,7 @@ parameters:
         - identifier: return.type
         - message: '#^Method Valet\\Drivers\\Custom\\.*ValetDriver\:\:isStaticFile\(\) has no return type specified\.$#'
         -
-            message: '#^Out of 34 possible return types, only 28 \- 82\.3 %% actually have it\. Add more return types to get over 100 %%$#'
+            message: '#^Out of 38 possible return types, only 32 \- 84\.2 %% actually have it\. Add more return types to get over 100 %%$#'
             paths:
                 - src/Drivers/CodeIgniter4ValetDriver.php
                 - src/Drivers/DistValetDriver.php

@@ -17,8 +17,6 @@ declare(strict_types=1);
  * @see https://github.com/guanguans/valet-drivers
  */
 
-namespace Guanguans\ValetDriversTests\Datasets;
-
 dataset('movies', [
     '肖申克的救赎',
     '美丽人生',

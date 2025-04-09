@@ -72,6 +72,7 @@ final class NewExceptionToNewAnonymousExtendsExceptionImplementsRector extends A
     }
 
     /**
+     * @see \PhpParser\NodeVisitor::*
      * @see \Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfoFactory
      * @see \Rector\Comments\NodeDocBlock\DocBlockUpdater
      * @see \RectorPrefix202503\print_node()

@@ -16,9 +16,6 @@ declare(strict_types=1);
  *
  * @see https://github.com/guanguans/valet-drivers
  */
-
-namespace Guanguans\ValetDriversTests;
-
 // arch('will not use debugging functions')
 //     ->expect([
 //         'echo',

@@ -16,6 +16,7 @@ declare(strict_types=1);
 use Ergebnis\Rector\Rules\Arrays\SortAssociativeArrayByKeyRector;
 use Guanguans\ValetDrivers\Support\Rectors\AddNoinspectionsDocCommentToDeclareRector;
 use Guanguans\ValetDrivers\Support\Rectors\NewExceptionToNewAnonymousExtendsExceptionImplementsRector;
+use Guanguans\ValetDrivers\Support\Rectors\RemoveNamespaceRector;
 use Illuminate\Support\Str;
 use Rector\CodeQuality\Rector\If_\ExplicitBoolCompareRector;
 use Rector\CodeQuality\Rector\LogicalAnd\LogicalToBooleanRector;
@@ -106,6 +107,9 @@ return RectorConfig::configure()
     ->withConfiguredRule(NewExceptionToNewAnonymousExtendsExceptionImplementsRector::class, [
         'Guanguans\ValetDrivers\Contracts\ThrowableContract',
     ])
+    ->withConfiguredRule(RemoveNamespaceRector::class, [
+        'Guanguans\ValetDriversTests',
+    ])
     ->withConfiguredRule(RemoveAnnotationRector::class, [
         'codeCoverageIgnore',
         'phpstan-ignore',
@@ -157,5 +161,11 @@ return RectorConfig::configure()
         AddNoinspectionsDocCommentToDeclareRector::class => [
             __DIR__.'/src/',
             ...glob(__DIR__.'/{*,.*}.php', \GLOB_BRACE),
+        ],
+        RemoveNamespaceRector::class => [
+            __DIR__.'/src/',
+            ...glob(__DIR__.'/{*,.*}.php', \GLOB_BRACE),
+            __DIR__.'/tests/Faker.php',
+            __DIR__.'/tests/TestCase.php',
         ],
     ]);

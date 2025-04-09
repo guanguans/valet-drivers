@@ -17,8 +17,6 @@ declare(strict_types=1);
  * @see https://github.com/guanguans/valet-drivers
  */
 
-namespace Guanguans\ValetDriversTests\Support;
-
 use function Guanguans\ValetDrivers\Support\classes;
 
 it('can get classes', function (): void {
