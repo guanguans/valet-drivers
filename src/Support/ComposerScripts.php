@@ -90,16 +90,12 @@ class ComposerScripts
 
             require_once $vendorDir.'/autoload.php';
 
-            require_once $vendorDir.'/../vendor-bin/laravel-valet/vendor/autoload.php';
-
             return;
         }
 
         $possibleAutoloadPaths = [
             __DIR__.'/../../vendor/autoload.php',
             __DIR__.'/../../../../../vendor/autoload.php',
-            __DIR__.'/../../vendor-bin/laravel-valet/vendor/autoload.php',
-            __DIR__.'/../../../../../vendor-bin/laravel-valet/vendor/autoload.php',
         ];
 
         foreach ($possibleAutoloadPaths as $possibleAutoloadPath) {

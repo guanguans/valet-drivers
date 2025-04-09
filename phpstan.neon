@@ -30,8 +30,8 @@ parameters:
         - src/
     scanFiles:
         - vendor/composer/InstalledVersions.php
-    scanDirectories:
-        - vendor-bin/laravel-valet/vendor/laravel/valet/
+#    scanDirectories:
+#        - vendor-bin/laravel-valet/vendor/laravel/valet/
 #    bootstrapFiles:
 #        - vendor-bin/laravel-valet/vendor/autoload.php
     excludePaths:
