@@ -51,6 +51,7 @@
         "guanguans/php-cs-fixer-custom-fixers": "^1.2",
         "guanguans/phpstan-rules": "^1.1",
         "guanguans/rector-rules": "^1.7",
+        "illuminate/support": "^9.52 || ^10.0 || ^11.0 || ^12.0 || ^13.0",
         "laravel/valet": "^4.12",
         "mockery/mockery": "^1.6",
         "nette/utils": "^4.0",
@@ -265,9 +266,9 @@
             "$PHP82 vendor/bin/grumphp run --ansi -vv"
         ],
         "jack": "@php -d='error_reporting=E_ALL &~ E_DEPRECATED' vendor/bin/jack",
-        "jack:breakpoint": "@jack breakpoint --limit=5",
+        "jack:breakpoint": "@jack breakpoint --limit=6",
         "jack:breakpoint-dev": "@jack:breakpoint --dev",
-        "jack:open-versions": "@jack open-versions --limit=5",
+        "jack:open-versions": "@jack open-versions --limit=6",
         "jack:open-versions-dev": "@jack:open-versions --dev",
         "jack:open-versions-dev-dry-run": "@jack:open-versions-dev --dry-run",
         "jack:open-versions-dry-run": "@jack:open-versions --dry-run",
@@ -359,8 +360,8 @@
         "php-cs-fixer:list-sets": "@php-cs-fixer list-sets --ansi -vv",
         "php-lint": [
             "@putenv:php",
-            "for DIR in .; do find $DIR -maxdepth 1 -type f -name '*.php' -type f ! -name 'xxx.php' -exec $PHP74 -l {} \\; 2>&1 | (! grep -v '^No syntax errors detected'); done",
-            "for DIR in src/ tests/; do find $DIR -type f -name '*.php' -type f ! -name 'xxx.php' -exec $PHP74 -l {} \\; 2>&1 | (! grep -v '^No syntax errors detected'); done"
+            "for DIR in .; do find $DIR -maxdepth 1 -type f -name '*.php' -type f ! -name 'xxx.php' -exec $PHP80 -l {} \\; 2>&1 | (! grep -v '^No syntax errors detected'); done",
+            "for DIR in src/ tests/; do find $DIR -type f -name '*.php' -type f ! -name 'xxx.php' -exec $PHP80 -l {} \\; 2>&1 | (! grep -v '^No syntax errors detected'); done"
         ],
         "phpbench": "@php vendor/bin/phpbench run --report=aggregate --ansi -vv",
         "phpmnd": "@php vendor/bin/phpmnd src/ --exclude-path=Support/helpers.phpp --ignore-numbers=2,-1 --hint --progress --ansi -vv",

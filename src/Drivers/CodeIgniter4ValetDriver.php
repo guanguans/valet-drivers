@@ -1,8 +1,6 @@
 <?php
 
-/** @noinspection GlobalVariableUsageInspection */
 /** @noinspection MissingParentCallInspection */
-/** @noinspection PhpIllegalPsrClassPathInspection */
 declare(strict_types=1);
 
 /**
@@ -27,7 +25,6 @@ final class CodeIgniter4ValetDriver extends BasicValetDriver
 
     /**
      * @noinspection PhpMissingReturnTypeInspection
-     * @noinspection MissingReturnTypeInspection
      */
     public function isStaticFile(string $sitePath, string $siteName, string $uri)
     {

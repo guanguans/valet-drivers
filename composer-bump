@@ -280,8 +280,6 @@ final class ComposerBump
     }
 
     /**
-     * @param list<null|scalar>|string $command
-     *
      * @noinspection PhpSameParameterValueInspection
      * @noinspection LongLine
      */

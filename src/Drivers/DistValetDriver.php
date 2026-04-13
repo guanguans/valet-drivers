@@ -1,7 +1,6 @@
 <?php
 
 /** @noinspection MissingParentCallInspection */
-/** @noinspection PhpIllegalPsrClassPathInspection */
 declare(strict_types=1);
 
 /**
@@ -29,7 +28,6 @@ final class DistValetDriver extends BasicValetDriver
 
     /**
      * @noinspection PhpMissingReturnTypeInspection
-     * @noinspection MissingReturnTypeInspection
      */
     public function isStaticFile(string $sitePath, string $siteName, string $uri)
     {

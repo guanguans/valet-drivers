@@ -50,7 +50,7 @@ parameters:
     scanFiles:
         - vendor/composer/InstalledVersions.php
     excludePaths:
-#        - src/Support/ComposerScripts.php
+        - src/Support/ComposerScripts.php
         - tests/Fixtures/
     tmpDir: .build/phpstan/
     phpVersion: 80000
@@ -170,11 +170,6 @@ parameters:
 #        - message: '#^Unused Guanguans\\Notify\\Rector\\.*\\.*\:\:__construct$#'
 
         - identifier: ergebnis.noExtends
-        - identifier: ergebnis.noParameterWithNullableTypeDeclaration
-        - identifier: ergebnis.noParameterWithNullDefaultValue
-
-        - identifier: cast.string
-        - identifier: empty.notAllowed
         - identifier: symplify.forbiddenNode
         - message: '#^Function Guanguans\\ValetDrivers\\Support\\classes\(\) should return list\<class\-string\> but returns array\<mixed, mixed\>\.$#'
         - message: '#^Method Guanguans\\ValetDrivers\\Drivers\\.*ValetDriver\:\:isStaticFile\(\) has no return type specified\.$#'
@@ -185,7 +180,6 @@ parameters:
             message: '#^The statement contains side effects\: \[process_exit\]\.$#'
             paths:
                - src/Drivers/Yii2ValetDriver.php
-               - src/Support/ComposerScripts.php
         -
             message: '#^Returning false in non return bool class method\. Use null with type\|null instead or add bool return type$#'
             path: src/Drivers/
