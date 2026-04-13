@@ -8,6 +8,26 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 
+<a name="4.0.0"></a>
+## [4.0.0] - 2026-04-13
+### 🤖 Continuous Integrations
+- **config:** Update github config files ([314a384](https://github.com/guanguans/valet-drivers/commit/314a384))
+- **config:** Update config files ([172e116](https://github.com/guanguans/valet-drivers/commit/172e116))
+
+### Pull Requests
+- Merge pull request [#38](https://github.com/guanguans/valet-drivers/issues/38) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-2.5.0
+- Merge pull request [#37](https://github.com/guanguans/valet-drivers/issues/37) from guanguans/dependabot/github_actions/actions/cache-5
+- Merge pull request [#36](https://github.com/guanguans/valet-drivers/issues/36) from guanguans/dependabot/github_actions/actions/checkout-6
+- Merge pull request [#35](https://github.com/guanguans/valet-drivers/issues/35) from guanguans/dependabot/github_actions/actions/setup-node-6
+- Merge pull request [#34](https://github.com/guanguans/valet-drivers/issues/34) from guanguans/dependabot/github_actions/stefanzweifel/git-auto-commit-action-7
+- Merge pull request [#33](https://github.com/guanguans/valet-drivers/issues/33) from guanguans/dependabot/github_actions/actions/setup-node-5
+- Merge pull request [#32](https://github.com/guanguans/valet-drivers/issues/32) from guanguans/dependabot/github_actions/actions/labeler-6
+- Merge pull request [#31](https://github.com/guanguans/valet-drivers/issues/31) from guanguans/dependabot/github_actions/actions/stale-10
+- Merge pull request [#30](https://github.com/guanguans/valet-drivers/issues/30) from guanguans/dependabot/github_actions/actions/checkout-5
+- Merge pull request [#29](https://github.com/guanguans/valet-drivers/issues/29) from guanguans/dependabot/github_actions/stefanzweifel/git-auto-commit-action-6
+- Merge pull request [#28](https://github.com/guanguans/valet-drivers/issues/28) from guanguans/dependabot/github_actions/dependabot/fetch-metadata-2.4.0
+
+
 <a name="3.0.1"></a>
 ## [3.0.1] - 2025-04-09
 ### ✨ Features
@@ -117,7 +137,8 @@ All notable changes to this project will be documented in this file.
 - Merge pull request [#1](https://github.com/guanguans/valet-drivers/issues/1) from guanguans/dependabot/github_actions/actions/stale-6
 
 
-[Unreleased]: https://github.com/guanguans/valet-drivers/compare/3.0.1...HEAD
+[Unreleased]: https://github.com/guanguans/valet-drivers/compare/4.0.0...HEAD
+[4.0.0]: https://github.com/guanguans/valet-drivers/compare/3.0.1...4.0.0
 [3.0.1]: https://github.com/guanguans/valet-drivers/compare/3.0.0...3.0.1
 [3.0.0]: https://github.com/guanguans/valet-drivers/compare/2.0.1...3.0.0
 [2.0.1]: https://github.com/guanguans/valet-drivers/compare/2.0.0...2.0.1
