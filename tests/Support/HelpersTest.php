@@ -5,6 +5,7 @@
 /** @noinspection PhpPossiblePolymorphicInvocationInspection */
 /** @noinspection PhpUndefinedClassInspection */
 /** @noinspection PhpUnhandledExceptionInspection */
+/** @noinspection PhpVoidFunctionResultUsedInspection */
 /** @noinspection StaticClosureCanBeUsedInspection */
 declare(strict_types=1);
 
@@ -20,6 +21,10 @@ declare(strict_types=1);
 use function Guanguans\ValetDrivers\Support\classes;
 
 it('can get classes', function (): void {
-    expect(classes())->toBeArray()->toBeTruthy()
-        ->and(classes())->toBeArray()->toBeTruthy();
+    expect(classes())
+        ->toBeArray()
+        ->toBeTruthy()
+        ->each->toBeString()->toBeTruthy();
+
+    expect(classes())->toBeArray();
 })->group(__DIR__, __FILE__);

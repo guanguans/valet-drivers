@@ -21,6 +21,9 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Valet\Filesystem;
 
+/**
+ * @api
+ */
 final class ComposerScripts
 {
     public static function installDriver(Event $event): void
@@ -29,9 +32,9 @@ final class ComposerScripts
 
         $io = $event->getIO();
 
-        while (true) {
+        for (; ;) {
             $wantToInstall = strtolower(
-                $io->ask(
+                (string) $io->ask(
                     "<info>Do you want to install the valet driver?</info> [yes<fg=yellow>(default)</>|no]:\n> ",
                     'yes'
                 )

@@ -5,7 +5,9 @@
 /** @noinspection PhpPossiblePolymorphicInvocationInspection */
 /** @noinspection PhpUndefinedClassInspection */
 /** @noinspection PhpUnhandledExceptionInspection */
+/** @noinspection PhpVoidFunctionResultUsedInspection */
 /** @noinspection StaticClosureCanBeUsedInspection */
+/** @noinspection PhpUnusedAliasInspection */
 declare(strict_types=1);
 
 /**
@@ -16,19 +18,56 @@ declare(strict_types=1);
  *
  * @see https://github.com/guanguans/valet-drivers
  */
+
+use Guanguans\ValetDrivers\Support\ComposerScripts;
+
+// arch()
+//     ->group(__DIR__, __FILE__)
+//     // ->skip()
+//     ->preset()->php()->ignoring([
+//     ]);
+//
+// arch()
+//     ->group(__DIR__, __FILE__)
+//     ->skip()
+//     ->preset()->laravel()->ignoring([
+//         ComposerScripts::class,
+//     ]);
+//
+// arch()
+//     ->group(__DIR__, __FILE__)
+//     // ->skip()
+//     ->preset()->security()->ignoring([
+//         'assert',
+//     ]);
+//
+// arch()
+//     ->group(__DIR__, __FILE__)
+//     ->skip()
+//     ->preset()->strict()->ignoring([
+//     ]);
+//
+// arch()
+//     ->group(__DIR__, __FILE__)
+//     ->skip()
+//     ->preset()->relaxed()->ignoring([
+//     ]);
+//
 // arch('will not use debugging functions')
+//     ->group(__DIR__, __FILE__)
+//     // ->throwsNoExceptions()
+//     // ->skip()
 //     ->expect([
-//         'echo',
-//         'print',
-//         'die',
+//         'dd',
+//         'env',
+//         'env_explode',
+//         'env_getcsv',
 //         'exit',
 //         'printf',
 //         'vprintf',
-//         'var_dump',
-//         'dump',
-//         'dd',
-//         'ray',
-//         'print_r',
-//         'var_export',
 //     ])
-//     ->each->not->toBeUsed();
+//     // ->each
+//     ->not->toBeUsed()
+//     ->ignoring([
+//         ComposerScripts::class,
+//     ]);

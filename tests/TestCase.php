@@ -5,6 +5,7 @@
 /** @noinspection PhpPossiblePolymorphicInvocationInspection */
 /** @noinspection PhpUndefinedClassInspection */
 /** @noinspection PhpUnhandledExceptionInspection */
+/** @noinspection PhpVoidFunctionResultUsedInspection */
 /** @noinspection StaticClosureCanBeUsedInspection */
 declare(strict_types=1);
 
@@ -21,18 +22,10 @@ namespace Guanguans\ValetDriversTests;
 
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use phpmock\phpunit\PHPMock;
-use Spatie\Snapshots\MatchesSnapshots;
 use Symfony\Component\VarDumper\Test\VarDumperTestTrait;
 
-/**
- * @coversNothing
- *
- * @small
- */
 class TestCase extends \PHPUnit\Framework\TestCase
 {
-    use Faker;
-    use MatchesSnapshots;
     use MockeryPHPUnitIntegration;
     use PHPMock;
     use VarDumperTestTrait;
@@ -56,19 +49,24 @@ class TestCase extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * This method is called after each test.
+     * Performs assertions shared by all tests of a test case.
+     *
+     * This method is called between setUp() and test.
      */
-    protected function tearDown(): void
-    {
-        $this->finish();
-        $this->closeMockery();
-    }
+    protected function assertPreConditions(): void {}
+
+    // /**
+    //  * Performs assertions shared by all tests of a test case.
+    //  *
+    //  * This method is called between test and tearDown().
+    //  *
+    //  * @see \Mockery\Adapter\Phpunit\MockeryPHPUnitIntegrationAssertPostConditions::assertPostConditions()
+    //  * @see \Mockery\Adapter\Phpunit\MockeryTestCase
+    //  */
+    // protected function assertPostConditions(): void {}
 
     /**
-     * Run extra tear down code.
+     * This method is called after each test.
      */
-    protected function finish(): void
-    {
-        // call more tear down methods
-    }
+    protected function tearDown(): void {}
 }

@@ -11,9 +11,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ macos-latest ]
-        php: [ 8.0, 8.4 ]
-        dependency-version: [ prefer-stable ]
+        os: [macos-latest]
+        php: [8.0, 8.4]
+        dependency-version: [prefer-stable]
 
     name: P${{ matrix.php }} - ${{ matrix.dependency-version }} - ${{ matrix.os }}
 

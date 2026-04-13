@@ -13,7 +13,7 @@ declare(strict_types=1);
  * @see https://github.com/guanguans/valet-drivers
  */
 
-namespace Valet\Drivers\Custom;
+namespace Guanguans\ValetDrivers\Drivers;
 
 use Valet\Drivers\BasicValetDriver;
 

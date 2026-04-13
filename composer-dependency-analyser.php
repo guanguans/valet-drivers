@@ -15,23 +15,9 @@ use ShipMonk\ComposerDependencyAnalyser\Config\Configuration;
 use ShipMonk\ComposerDependencyAnalyser\Config\ErrorType;
 
 return (new Configuration)
-    ->addPathsToScan(
-        [
-            __DIR__.'/src/',
-        ],
-        false
-    )
+    // ->addPathsToScan([__DIR__.'/config/'], false)
     ->addPathsToExclude([
-        __DIR__.'/src/Support/Rectors/',
         __DIR__.'/src/Support/ComposerScripts.php',
         __DIR__.'/tests/',
     ])
-    // ->ignoreUnknownClasses([
-    //     'Valet\Drivers\BasicValetDriver',
-    // ])
-    ->ignoreErrorsOnPackages(
-        [
-            'laravel/valet',
-        ],
-        [ErrorType::DEV_DEPENDENCY_IN_PROD],
-    );
+    ->ignoreErrorsOnPackage('laravel/valet', [ErrorType::DEV_DEPENDENCY_IN_PROD]);

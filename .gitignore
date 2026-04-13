@@ -1,14 +1,21 @@
 .build/
 .history/
 .idea/
+tests/Browser/Screenshots/
 vendor/
+
 vendor-bin/projects/
+/vendor-bin/*/*
+!/vendor-bin/*/composer.json
 
 .DS_Store
-.php-cs-fixer.cache
-.phpunit.result.cache
-clover.xml
-composer.lock
-phpunit.xml
-psalm.xml
+.env
+.php-cs-fixer.php
+/*.zip
+/laravel
 /tests.*
+cghooks.lock
+composer.lock
+phpbench.json
+phpstan.neon
+phpunit.xml

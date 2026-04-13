@@ -4,11 +4,11 @@
 
 > List of drivers for laravel-valet. - laravel-valet 的驱动列表。
 
-[![tests](https://github.com/guanguans/valet-drivers/workflows/tests/badge.svg)](https://github.com/guanguans/valet-drivers/actions)
-[![check & fix styling](https://github.com/guanguans/valet-drivers/actions/workflows/php-cs-fixer.yml/badge.svg)](https://github.com/guanguans/valet-drivers/actions)
-[![codecov](https://codecov.io/gh/guanguans/valet-drivers/branch/main/graph/badge.svg?token=URGFAWS6S4)](https://codecov.io/gh/guanguans/valet-drivers)
+[![tests](https://github.com/guanguans/valet-drivers/actions/workflows/tests.yml/badge.svg)](https://github.com/guanguans/valet-drivers/actions/workflows/tests.yml)
+[![php-cs-fixer](https://github.com/guanguans/valet-drivers/actions/workflows/php-cs-fixer.yml/badge.svg)](https://github.com/guanguans/valet-drivers/actions/workflows/php-cs-fixer.yml)
+[![codecov](https://codecov.io/gh/guanguans/valet-drivers/graph/badge.svg?token=0RtgSGom4K)](https://codecov.io/gh/guanguans/valet-drivers)
 [![Latest Stable Version](https://poser.pugx.org/guanguans/valet-drivers/v)](https://packagist.org/packages/guanguans/valet-drivers)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/guanguans/valet-drivers)
+[![GitHub release (with filter)](https://img.shields.io/github/v/release/guanguans/valet-drivers)](https://github.com/guanguans/valet-drivers/releases)
 [![Total Downloads](https://poser.pugx.org/guanguans/valet-drivers/downloads)](https://packagist.org/packages/guanguans/valet-drivers)
 [![License](https://poser.pugx.org/guanguans/valet-drivers/license)](https://packagist.org/packages/guanguans/valet-drivers)
 
@@ -25,9 +25,12 @@ curl -o ~/.config/valet/Drivers/Yii2ValetDriver.php https://raw.githubuserconten
 wget -O ~/.config/valet/Drivers/Yii2ValetDriver.php https://raw.githubusercontent.com/guanguans/valet-drivers/main/src/Drivers/Yii2ValetDriver.php
 ```
 
-## 测试
+## Composer 脚本
 
-```bash
+```shell
+composer app:install-driver
+composer checks:required
+composer php-cs-fixer:fix
 composer test
 ```
 
@@ -50,4 +53,4 @@ composer test
 
 ## 协议
 
-MIT 许可证（MIT）。有关更多信息，请参见[协议文件](LICENSE)。
+MIT 许可证(MIT)。有关更多信息，请参见[协议文件](LICENSE)。

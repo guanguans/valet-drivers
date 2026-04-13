@@ -19,35 +19,41 @@ use Composer\Autoload\ClassLoader;
 
 if (!\function_exists('Guanguans\ValetDrivers\Support\classes')) {
     /**
-     * @noinspection PhpUndefinedNamespaceInspection
-     *
      * @see \DG\BypassFinals::enable()
      * @see \get_declared_classes()
      * @see \get_declared_interfaces()
      * @see \get_declared_traits()
      *
      * @return list<class-string>
+     *
+     * @noinspection PhpUndefinedNamespaceInspection
      */
     function classes(): array
     {
-        /** @var list<list<string>> $classes */
-        static $classes = [];
+        static $classes;
 
-        if ($classes) {
+        if (\is_array($classes)) {
             return $classes;
         }
 
-        foreach (spl_autoload_functions() as $loader) {
-            if (\is_array($loader) && $loader[0] instanceof ClassLoader) {
-                $classes[] = array_keys($loader[0]->getClassMap());
-            }
-        }
+        /** @var list<list<class-string>> $autoloadClasses */
+        $autoloadClasses = array_reduce(
+            spl_autoload_functions(),
+            static function (array $autoloadClasses, mixed $loader): array {
+                if (\is_array($loader) && $loader[0] instanceof ClassLoader) {
+                    $autoloadClasses[] = array_keys($loader[0]->getClassMap());
+                }
 
-        return array_unique(array_merge(
+                return $autoloadClasses;
+            },
+            []
+        );
+
+        return $classes = array_values(array_unique(array_merge(
             get_declared_classes(),
             get_declared_interfaces(),
             get_declared_traits(),
-            ...$classes
-        ));
+            ...$autoloadClasses
+        )));
     }
 }

@@ -1,0 +1,34 @@
+{
+    "require-dev": {
+        "php": ">=8.2",
+        "ergebnis/composer-normalize": "^2.50",
+        "guanguans/monorepo-builder-worker": "^3.2"
+    },
+    "suggest": {
+        "jbelien/phpstan-sarif-formatter": "php > 7.4",
+        "mrpunyapal/peststan": "php > 7.4",
+        "mrpunyapal/rector-pest": "php > 7.4",
+        "nicksdot/phpstan-phpstorm-error-identifiers": "php > 7.4",
+        "pestphp/pest-plugin-arch": "php > 7.4",
+        "pestphp/pest-plugin-profanity": "php > 7.4",
+        "php-standard-library/php-standard-library": "php > 7.4",
+        "php-standard-library/phpstan-extension": "php > 7.4",
+        "rector/mockstan": "php > 7.4",
+        "roave/backward-compatibility-check": "php > 7.4",
+        "roave/no-floaters": "php > 7.4",
+        "sidz/phpstan-rules": "php > 7.4",
+        "spatie/invade": "php > 7.4",
+        "symplify/coding-standard": "php > 7.4",
+        "symplify/easy-coding-standard": "php > 7.4"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true,
+            "theofidry/composer-inheritance-plugin": false,
+            "wikimedia/composer-merge-plugin": false
+        },
+        "sort-packages": true
+    }
+}
