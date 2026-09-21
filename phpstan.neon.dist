@@ -11,6 +11,8 @@ includes:
 #    - vendor-bin/larastan/vendor/larastan/larastan/extension.neon
 #    - vendor/ekino/phpstan-banned-code/extension.neon
 #    - vendor/ergebnis/phpstan-rules/rules.neon
+#    - vendor/canvural/larastan-strict-rules/rules.neon
+#    - vendor/larastan/vendor/larastan/larastan/extension.neon
 #    - vendor/phpstan/phpstan-strict-rules/rules.neon
 #    - vendor/roave/no-floaters/rules.neon
 #    - vendor/shipmonk/dead-code-detector/rules.neon
@@ -18,6 +20,8 @@ includes:
 
 #    - vendor/symplify/phpstan-rules/config/code-complexity-rules.neon
 #    - vendor/symplify/phpstan-rules/config/configurable-rules.neon
+#    - vendor/symplify/phpstan-rules/config/ctor-rules.neon
+#    - vendor/symplify/phpstan-rules/config/mock-rules.neon
 #    - vendor/symplify/phpstan-rules/config/naming-rules.neon
 #    - vendor/symplify/phpstan-rules/config/static-rules.neon
     - vendor/symplify/phpstan-rules/config/symplify-rules.neon
@@ -29,7 +33,7 @@ includes:
 #    - vendor/symplify/phpstan-rules/config/symfony-config-rules.neon
 
 services:
-#    # https://github.com/guanguans/notify/security/code-scanning
+#    # https://github.com/guanguans/valet-drivers/security/code-scanning
 #    # https://github.com/jbelien/phpstan-sarif-formatter
 #    errorFormatter.sarif:
 #        class: PHPStanSarifErrorFormatter\SarifErrorFormatter
@@ -56,6 +60,7 @@ parameters:
     phpVersion: 80000
     level: max
     editorUrl: 'phpstorm://open?file=%%file%%&line=%%line%%'
+#    errorFormat: symplify
     errorFormat: friendly
     friendly:
         lineBefore: 3
@@ -80,19 +85,28 @@ parameters:
         dependency_tree_types:
 #            # only these explicit types are checked, nothing else
 #            - Rector\Contract\Rector\RectorInterface
+#    symplify:
+#        pathStrings: true
+#        ctor: true
+#        mocks: true
+#        laravelReturnType: true
+#        symfonyReturnType: true
     type_coverage:
         declare: 100
         param: 100
         return: 100
         constant: 100
         property: 100
-    type_perfect:
-        narrow_param: true
-        narrow_return: true
-        null_over_false: true
-        no_mixed: false
-        no_mixed_property: true
-        no_mixed_caller: false
+#    type_perfect:
+#        narrow_param: true
+#        narrow_return: true
+#        null_over_false: true
+#        no_mixed: false
+#        no_mixed_property: true
+#        no_mixed_caller: false
+#        no_param_type_removal: true
+#        no_isset_on_object: true
+#        no_empty_on_object: true
     unused_public:
         constants: true
         properties: true
@@ -101,9 +115,6 @@ parameters:
         template_paths:
 #            - resources/views/
     disallowedFunctionCalls:
-        -
-            function: 'env()'
-            message: 'use config() instead'
         -
             function: 'env_explode()'
             message: 'use config() instead'
@@ -180,6 +191,6 @@ parameters:
             message: '#^The statement contains side effects\: \[process_exit\]\.$#'
             paths:
                - src/Drivers/Yii2ValetDriver.php
-        -
-            message: '#^Returning false in non return bool class method\. Use null with type\|null instead or add bool return type$#'
-            path: src/Drivers/
+#        -
+#            message: '#^Returning false in non return bool class method\. Use null with type\|null instead or add bool return type$#'
+#            path: src/Drivers/

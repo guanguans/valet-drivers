@@ -25,6 +25,8 @@ use Symfony\Component\Process\ExecutableFinder;
 use Symfony\Component\Process\PhpExecutableFinder;
 use Symfony\Component\Process\Process;
 
+// error_reporting(\E_ALL & ~\E_DEPRECATED & ~\E_USER_DEPRECATED);
+error_reporting(\E_ALL & ~\E_DEPRECATED);
 file_exists($autoload = __DIR__.'/../../vendor/autoload.php') and require $autoload;
 is_file($composer = __DIR__.'/vendor/bin/composer') and unlink($composer);
 
@@ -41,8 +43,7 @@ $statusCode = (new SingleCommandApplication)
     ->addOption('composer-binary', null, InputOption::VALUE_OPTIONAL)
     ->addOption('except-package', null, InputOption::VALUE_IS_ARRAY | InputOption::VALUE_OPTIONAL)
     ->addOption('except-version', null, InputOption::VALUE_IS_ARRAY | InputOption::VALUE_OPTIONAL)
-    ->setCode(static function (InputInterface $input, OutputInterface $output): void {
-        assert_options(\ASSERT_BAIL, 1);
+    ->setCode(static function (InputInterface $input, OutputInterface $output): int {
         \assert((bool) $input->getOption('highest-php-binary'));
         (new ComposerBump(
             $input->getOption('composer-json-path') ?: implode(\DIRECTORY_SEPARATOR, [__DIR__, 'composer.json']),
@@ -53,6 +54,8 @@ $statusCode = (new SingleCommandApplication)
             $input->getOption('except-version'),
             new SymfonyStyle($input, $output),
         ))();
+
+        return 0;
     })
     ->run();
 
@@ -116,6 +119,7 @@ final class ComposerBump
     public function __invoke(): void
     {
         $this
+            ->updateComposerPackages()
             ->updateOutdatedComposerPackages()
             ->updateComposerPackages()
             ->updateOutdatedComposerPackages()
@@ -272,9 +276,12 @@ final class ComposerBump
 
     private function composerFor(?string $composerBinary = null, ?string $phpBinary = null): string
     {
+        // file_exists('vendor/bin/composer') and unlink('vendor/bin/composer');
+
         return implode(' ', [
             escapeshellarg($phpBinary ?? (new PhpExecutableFinder)->find()),
-            // '-d', escapeshellarg('error_reporting=E_ALL &~ E_DEPRECATED'),
+            // '-d', escapeshellarg('error_reporting=E_ALL &~ E_DEPRECATED &~ E_USER_DEPRECATED'),
+            '-d', escapeshellarg('error_reporting=E_ALL &~ E_DEPRECATED'),
             escapeshellarg((string) ($composerBinary ?? (new ExecutableFinder)->find('composer'))),
         ]);
     }
@@ -284,7 +291,7 @@ final class ComposerBump
      * @noinspection LongLine
      */
     private function mustRunCommand(
-        string $command,
+        array|string $command,
         ?string $cwd = null,
         array $env = [],
         mixed $input = null,
@@ -303,8 +310,10 @@ final class ComposerBump
             'XDEBUG_MODE' => 'off',
         ];
 
-        // $process = new Process(array_merge($command, $options), $cwd, $env, $input, $timeout);
-        $process = Process::fromShellCommandline(implode(' ', array_merge([$command], $options)), $cwd, $env, $input, $timeout);
+        $process = \is_string($command)
+            ? Process::fromShellCommandline(implode(' ', [$command, ...$options]), $cwd, $env, $input, $timeout)
+            : new Process([...$command, ...$options], $cwd, $env, $input, $timeout);
+
         $this->symfonyStyle->warning("The command [{$process->getCommandLine()}] is running in the working directory [$cwd] .");
 
         return $process->mustRun(function (string $_, string $buffer): void {

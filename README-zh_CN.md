@@ -31,6 +31,7 @@ wget -O ~/.config/valet/Drivers/Yii2ValetDriver.php https://raw.githubuserconten
 composer app:install-driver
 composer checks:required
 composer php-cs-fixer:fix
+composer ecs:fix
 composer test
 ```
 

@@ -1,7 +1,6 @@
 <?php
 
 /** @noinspection PhpUnhandledExceptionInspection */
-
 declare(strict_types=1);
 
 /**
@@ -13,26 +12,17 @@ declare(strict_types=1);
  * @see https://github.com/guanguans/valet-drivers
  */
 
-use Ergebnis\Rector\Rules\Expressions\Arrays\SortAssociativeArrayByKeyRector;
-use Ergebnis\Rector\Rules\Faker\GeneratorPropertyFetchToMethodCallRector;
-use Ergebnis\Rector\Rules\Files\ReferenceNamespacedSymbolsRelativeToNamespacePrefixRector;
+use Guanguans\PhpCsFixerCustomFixers\Support\Utils;
+use Guanguans\RectorRules\NodeVisitor\ParentConnectingVisitor;
 use Guanguans\RectorRules\Rector\File\AddNoinspectionDocblockToFileFirstStmtRector;
 use Guanguans\RectorRules\Rector\Name\RenameToConventionalCaseNameRector;
 use Guanguans\RectorRules\Set\SetList;
-use PhpParser\NodeVisitor\ParentConnectingVisitor;
-use Rector\CodeQuality\Rector\If_\ExplicitBoolCompareRector;
 use Rector\CodeQuality\Rector\LogicalAnd\LogicalToBooleanRector;
-use Rector\CodingStyle\Rector\ArrowFunction\StaticArrowFunctionRector;
+use Rector\CodingStyle\Rector\Assign\SplitDoubleAssignRector;
 use Rector\CodingStyle\Rector\ClassLike\NewlineBetweenClassLikeStmtsRector;
-use Rector\CodingStyle\Rector\Closure\StaticClosureRector;
-use Rector\CodingStyle\Rector\Encapsed\EncapsedStringsToSprintfRector;
-use Rector\CodingStyle\Rector\Encapsed\WrapEncapsedVariableInCurlyBracesRector;
-use Rector\CodingStyle\Rector\Enum_\EnumCaseToPascalCaseRector;
 use Rector\Config\RectorConfig;
-use Rector\EarlyReturn\Rector\If_\ChangeOrIfContinueToMultiContinueRector;
-use Rector\EarlyReturn\Rector\Return_\ReturnBinaryOrToEarlyReturnRector;
-use Rector\Php73\Rector\FuncCall\JsonThrowOnErrorRector;
-use Rector\Strict\Rector\Empty_\DisallowedEmptyRuleFixerRector;
+use Rector\DowngradePhp74\Rector\Array_\DowngradeArraySpreadRector;
+use Rector\PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector;
 use Rector\Transform\Rector\String_\StringToClassConstantRector;
 use Rector\ValueObject\PhpVersion;
 
@@ -40,18 +30,33 @@ return RectorConfig::configure()
     ->withPaths([
         __DIR__.'/src/',
         __DIR__.'/tests/',
-        __DIR__.'/composer-bump',
+        ...Utils::defaultRootFiles(),
     ])
     ->withRootFiles()
-    ->withSkip(['*/Fixtures/*', __DIR__.'/tests.php'])
+    ->withSkip(['*/Fixtures/*'])
+    ->withSkip([
+        DowngradeArraySpreadRector::class,
+    ])
+    ->withSkip([
+        LogicalToBooleanRector::class,
+        NewlineBetweenClassLikeStmtsRector::class,
+        PreferPHPUnitThisCallRector::class,
+        SplitDoubleAssignRector::class,
+    ])
+    ->withSkip([
+        StringToClassConstantRector::class => [
+            __DIR__.'/composer-bump',
+        ],
+    ])
     ->withCache(__DIR__.'/.build/rector/')
     // ->withoutParallel()
     ->withParallel()
-    ->withImportNames(importDocBlockNames: false, importShortClasses: false)
-    // ->withImportNames(importNames: false)
-    // ->withEditorUrl()
+    ->withImportNames(importDocBlockNames: false, importShortClasses: false, removeUnusedImports: false)
+    // ->withImportNames(true, false, false, false)
+    ->reportUnusedSkips()
     ->withFluentCallNewLine()
     ->withTreatClassesAsFinal()
+    ->withTypeGuardedClasses([])
     ->withAttributesSets(phpunit: true, all: true)
     ->withComposerBased(phpunit: true/* , laravel: true */)
     ->withPhpVersion(PhpVersion::PHP_80)
@@ -65,24 +70,17 @@ return RectorConfig::configure()
         typeDeclarationDocblocks: true,
         privatization: true,
         naming: true,
-        instanceOf: true,
-        earlyReturn: true,
-        // strictBooleans: true,
-        // carbon: true,
+        // namedArgs: true,
+        carbon: true,
         rectorPreset: true,
         phpunitCodeQuality: true,
+        phpunitNarrowAsserts: true,
+        phpunitMockToStub: true,
     )
     ->withSets([
         SetList::ALL,
     ])
-    ->withRules([
-        EnumCaseToPascalCaseRector::class,
-        GeneratorPropertyFetchToMethodCallRector::class,
-        JsonThrowOnErrorRector::class,
-        SortAssociativeArrayByKeyRector::class,
-        StaticArrowFunctionRector::class,
-        StaticClosureRector::class,
-    ])
+    ->withRules([])
     ->withConfiguredRule(AddNoinspectionDocblockToFileFirstStmtRector::class, [
         '*/tests/*' => [
             'AnonymousFunctionStaticInspection',
@@ -95,33 +93,4 @@ return RectorConfig::configure()
         ],
     ])
     ->registerDecoratingNodeVisitor(ParentConnectingVisitor::class)
-    ->withConfiguredRule(RenameToConventionalCaseNameRector::class, ['MIT'])
-    ->withConfiguredRule(ReferenceNamespacedSymbolsRelativeToNamespacePrefixRector::class, [
-        'namespacePrefixes' => [
-            // 'Guanguans\\ValetDrivers',
-        ],
-    ])
-    ->withSkip([
-        ChangeOrIfContinueToMultiContinueRector::class,
-        DisallowedEmptyRuleFixerRector::class,
-        EncapsedStringsToSprintfRector::class,
-        ExplicitBoolCompareRector::class,
-        LogicalToBooleanRector::class,
-        NewlineBetweenClassLikeStmtsRector::class,
-        ReturnBinaryOrToEarlyReturnRector::class,
-        WrapEncapsedVariableInCurlyBracesRector::class,
-    ])
-    ->withSkip([
-        SortAssociativeArrayByKeyRector::class => [
-            __DIR__.'/src',
-            __DIR__.'/tests',
-        ],
-        StaticArrowFunctionRector::class => $staticClosureSkipPaths = [
-            __DIR__.'/tests/*Test.php',
-            __DIR__.'/tests/Pest.php',
-        ],
-        StaticClosureRector::class => $staticClosureSkipPaths,
-        StringToClassConstantRector::class => [
-            __DIR__.'/composer-bump',
-        ],
-    ]);
+    ->withConfiguredRule(RenameToConventionalCaseNameRector::class, ['MIT']);

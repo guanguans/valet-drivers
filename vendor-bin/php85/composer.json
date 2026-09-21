@@ -1,25 +1,22 @@
 {
     "require-dev": {
-        "php": ">=8.2",
-        "ergebnis/composer-normalize": "^2.50",
-        "guanguans/monorepo-builder-worker": "^3.2"
+        "php": ">=8.5",
+        "ergebnis/composer-normalize": "^2.53",
+        "guanguans/monorepo-builder-worker": "^3.3"
     },
     "suggest": {
         "jbelien/phpstan-sarif-formatter": "php > 8.0",
-        "mrpunyapal/peststan": "php > 8.0",
-        "mrpunyapal/rector-pest": "php > 8.0",
         "nicksdot/phpstan-phpstorm-error-identifiers": "php > 8.0",
         "pestphp/pest-plugin-arch": "php > 8.0",
+        "pestphp/pest-plugin-phpstan": "php > 8.0",
         "pestphp/pest-plugin-profanity": "php > 8.0",
+        "pestphp/pest-plugin-rector": "php > 8.0",
         "php-standard-library/php-standard-library": "php > 8.0",
         "php-standard-library/phpstan-extension": "php > 8.0",
-        "rector/mockstan": "php > 8.0",
         "roave/backward-compatibility-check": "php > 8.0",
         "roave/no-floaters": "php > 8.0",
         "sidz/phpstan-rules": "php > 8.0",
-        "spatie/invade": "php > 8.0",
-        "symplify/coding-standard": "php > 8.0",
-        "symplify/easy-coding-standard": "php > 8.0"
+        "spatie/invade": "php > 8.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

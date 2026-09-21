@@ -1,8 +1,11 @@
 {
     "require-dev": {
         "php": ">=8.0",
-        "ergebnis/composer-normalize": "^2.50",
+        "ergebnis/composer-normalize": "^2.53",
         "symplify/rule-doc-generator": "^12.2"
+    },
+    "suggest": {
+        "foo/bar": "php > 8.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
