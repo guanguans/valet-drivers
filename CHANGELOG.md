@@ -8,6 +8,12 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 
+<a name="4.0.1"></a>
+## [4.0.1] - 2026-09-21
+### 📦 Builds
+- **deps:** Bump ergebnis/composer-normalize and guanguans/php-cs-fixer-custom-fixers ([f3ed7e1](https://github.com/guanguans/valet-drivers/commit/f3ed7e1))
+
+
 <a name="4.0.0"></a>
 ## [4.0.0] - 2026-04-13
 ### 🤖 Continuous Integrations
@@ -137,7 +143,8 @@ All notable changes to this project will be documented in this file.
 - Merge pull request [#1](https://github.com/guanguans/valet-drivers/issues/1) from guanguans/dependabot/github_actions/actions/stale-6
 
 
-[Unreleased]: https://github.com/guanguans/valet-drivers/compare/4.0.0...HEAD
+[Unreleased]: https://github.com/guanguans/valet-drivers/compare/4.0.1...HEAD
+[4.0.1]: https://github.com/guanguans/valet-drivers/compare/4.0.0...4.0.1
 [4.0.0]: https://github.com/guanguans/valet-drivers/compare/3.0.1...4.0.0
 [3.0.1]: https://github.com/guanguans/valet-drivers/compare/3.0.0...3.0.1
 [3.0.0]: https://github.com/guanguans/valet-drivers/compare/2.0.1...3.0.0
